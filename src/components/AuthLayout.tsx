@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { CirclesBackground } from '@/components/CirclesBackground'
+
 import { Logo } from '@/components/Logo'
 
 export function AuthLayout({
@@ -19,11 +19,7 @@ export function AuthLayout({
           <Logo className="mx-auto h-10 w-auto" />
         </Link>
         <div className="relative mt-12 sm:mt-16">
-          <CirclesBackground
-            width="1090"
-            height="1090"
-            className="absolute -top-7 left-1/2 -z-10 h-[788px] -translate-x-1/2 mask-[linear-gradient(to_bottom,white_20%,transparent_75%)] stroke-gray-300/30 sm:-top-9 sm:h-auto"
-          />
+
           <h1 className="text-center text-2xl font-medium tracking-tight text-gray-900">
             {title}
           </h1>

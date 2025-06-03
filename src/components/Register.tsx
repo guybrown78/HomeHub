@@ -55,17 +55,17 @@ const Register = () => {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
-								<TextField label='First Name' name='firstName' id="firstName" onChange={handleChange}/>
+								<TextField label='First Name' name='firstName' onChange={handleChange}/>
                 
               </div>
 
               <div>
-                 <TextField label='Last Name' name='lastName' id="lastName" onChange={handleChange}/>
+                 <TextField label='Last Name' name='lastName' onChange={handleChange}/>
               </div>
             </div>
 
             <div>
-              <TextField label='Email address' type='email' name='email' id="email" onChange={handleChange}/>
+              <TextField label='Email address' type='email' name='email' onChange={handleChange}/>
             </div>
 
             <fieldset>
