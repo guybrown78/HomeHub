@@ -16,12 +16,11 @@ import Image from 'next/image'
 import { Fragment, useEffect, useId, useRef, useState } from 'react'
 import { useDebouncedCallback } from 'use-debounce'
 
-
 import { AppScreen } from '@/components/AppScreen'
 import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
 
-import { HiWrenchScrewdriver, HiBolt, HiBookOpen } from 'react-icons/hi2'
+import { HiBolt, HiBookOpen, HiWrenchScrewdriver } from 'react-icons/hi2'
 
 const MotionAppScreenHeader = motion(AppScreen.Header)
 const MotionAppScreenBody = motion(AppScreen.Body)
@@ -186,19 +185,18 @@ type ScreenProps =
     }
   | { animated?: false }
 
-
 function InviteScreen(props: ScreenProps) {
   return (
     // <AppScreen className="w-full">
-      // <MotionAppScreenBody
-      //   {...(props.animated ? { ...bodyAnimation, custom: props.custom } : {})}
-      //   className="rounded-[36px] overflow-hidden"
-      // >
-			<div className=''>
-				 <Image className="" src={supportScreen} alt='' unoptimized />
-			</div>
-       
-      // </MotionAppScreenBody>
+    // <MotionAppScreenBody
+    //   {...(props.animated ? { ...bodyAnimation, custom: props.custom } : {})}
+    //   className="rounded-[36px] overflow-hidden"
+    // >
+    <div className="">
+      <Image className="" src={supportScreen} alt="" unoptimized />
+    </div>
+
+    // </MotionAppScreenBody>
     // </AppScreen>
   )
 }
@@ -206,15 +204,15 @@ function InviteScreen(props: ScreenProps) {
 function StocksScreen(props: ScreenProps) {
   return (
     // <AppScreen className="w-full">
-      // <MotionAppScreenBody
-      //   {...(props.animated ? { ...bodyAnimation, custom: props.custom } : {})}
-      //   className="rounded-[36px] overflow-hidden"
-      // >
-      <div className=''>
-        <Image src={epcScreen} alt='' unoptimized />
-      </div>
-         
-      // </MotionAppScreenBody>
+    // <MotionAppScreenBody
+    //   {...(props.animated ? { ...bodyAnimation, custom: props.custom } : {})}
+    //   className="rounded-[36px] overflow-hidden"
+    // >
+    <div className="">
+      <Image src={epcScreen} alt="" unoptimized />
+    </div>
+
+    // </MotionAppScreenBody>
     // </AppScreen>
   )
 }
@@ -226,10 +224,10 @@ function InvestScreen(props: ScreenProps) {
         {...(props.animated ? { ...bodyAnimation, custom: props.custom } : {})}
         className="rounded-[36px] overflow-hidden"
       > */}
-      <div className=''>
-        <Image src={guideScreen} alt='' unoptimized />
+      <div className="">
+        <Image src={guideScreen} alt="" unoptimized />
       </div>
-        
+
       {/* </MotionAppScreenBody> */}
     </AppScreen>
   )
@@ -288,17 +286,13 @@ function FeaturesDesktop() {
                   {feature.name}
                 </Tab>
               </h3>
-              <p className="mt-2 text-sm text-gray-50">
-                {feature.description}
-              </p>
+              <p className="mt-2 text-sm text-gray-50">{feature.description}</p>
             </div>
           </div>
         ))}
       </TabList>
       <div className="relative col-span-6">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-         
-        </div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
         <PhoneFrame className="relative z-10 mx-auto w-full max-w-[366px]">
           <TabPanels as={Fragment}>
             <AnimatePresence
@@ -310,7 +304,7 @@ function FeaturesDesktop() {
                   <TabPanel
                     static
                     key={feature.name + changeCount}
-                    className="col-start-1 row-start-1 flex focus:outline-offset-32 data-selected:not-data-focus:outline-hidden pt-8"
+                    className="col-start-1 row-start-1 flex pt-8 focus:outline-offset-32 data-selected:not-data-focus:outline-hidden"
                   >
                     <feature.screen
                       animated
@@ -371,15 +365,12 @@ function FeaturesMobile() {
             ref={(ref) => ref && (slideRefs.current[featureIndex] = ref)}
             className="w-full flex-none snap-center px-4 sm:px-6"
           >
-            <div className="relative transform overflow-hidden rounded-2xl  px-5 py-6">
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-
-              </div>
+            <div className="relative transform overflow-hidden rounded-2xl px-5 py-6">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
               <PhoneFrame className="relative mx-auto w-full max-w-[366px]">
-								<div className='pt-6'>
-									<feature.screen />
-								</div>
-                
+                <div className="pt-6">
+                  <feature.screen />
+                </div>
               </PhoneFrame>
               <div className="absolute inset-x-0 bottom-0 bg-violet-800/95 p-6 backdrop-blur-sm sm:p-10">
                 <feature.icon className="h-8 w-8 fill-amber-300" />
@@ -424,7 +415,7 @@ export function PrimaryFeatures() {
     <section
       id="features"
       aria-label="Features for investing all your money"
-      className="bg-violet-950 py-20 sm:py-32 rounded-t-5xl"
+      className="rounded-t-5xl bg-violet-950 py-20 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
@@ -432,8 +423,10 @@ export function PrimaryFeatures() {
             HomeHub is your go-to guide for everything about your&nbsp;home.
           </h2>
           <p className="mt-2 text-lg text-white">
-            It helps tenants save money, manage energy use, and stay on top of repairs and responsibilities. Designed to support both residents and landlords, HomeHub makes home information easy, accessible, and sustainable.
-
+            It helps tenants save money, manage energy use, and stay on top of
+            repairs and responsibilities. Designed to support both residents and
+            landlords, HomeHub makes home information easy, accessible, and
+            sustainable.
           </p>
         </div>
       </Container>
