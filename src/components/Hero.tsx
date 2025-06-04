@@ -26,7 +26,7 @@ export function Hero() {
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
             <h1 className="text-5xl font-bold tracking-tight text-violet-950">
-              Let&apos;s make housing easier, together.
+              Let&apos;s make tenant engagement better, together.
             </h1>
             <p className="mt-6 text-lg text-gray-600">
              	HomeHub helps landlords connect with hundreds of tenants — delivering energy advice, repair updates, local support, and trusted communication, all in one place.

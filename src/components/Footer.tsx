@@ -30,7 +30,7 @@ export function Footer() {
               <Logomark className="h-10 w-10 flex-none fill-amber-300" />
               <div className="ml-4">
                 <p className="text-base font-semibold">HomeHub</p>
-                <p className="mt-1 text-sm">Let&apos;s make housing easier, together.</p>
+                <p className="mt-1 text-sm">Let&apos;s make tenant engagement better, together.</p>
               </div>
             </div>
             <nav className="mt-11 flex gap-8">
