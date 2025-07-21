@@ -188,6 +188,47 @@ const Register = () => {
                   />
                   <span className="text-gray-700">Landlord</span>
                 </label>
+
+								 <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="role"
+                    value="homeowner"
+                    checked={formData.role === 'homeowner'}
+                    onChange={handleChange}
+                    required
+                    className="text-violet-600 focus:ring-violet-600"
+                  />
+                  <span className="text-gray-700">Homeowner</span>
+                </label>
+
+								 <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="role"
+                    value="investor"
+                    checked={formData.role === 'investor'}
+                    onChange={handleChange}
+                    required
+                    className="text-violet-600 focus:ring-violet-600"
+                  />
+                  <span className="text-gray-700">Investor</span>
+                </label>
+
+								<label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="role"
+                    value="other"
+                    checked={formData.role === 'other'}
+                    onChange={handleChange}
+                    required
+                    className="text-violet-600 focus:ring-violet-600"
+                  />
+                  <span className="text-gray-700">Other</span>
+                </label>
+
+
               </div>
             </fieldset>
 

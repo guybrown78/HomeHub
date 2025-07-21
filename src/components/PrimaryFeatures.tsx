@@ -279,7 +279,7 @@ function FeaturesDesktop() {
               />
             )}
             <div className="relative z-10 p-8">
-              <feature.icon className="h-8 w-8 fill-amber-300" />
+              <feature.icon className="h-8 w-8 fill-[#FFA500]" />
               <h3 className="mt-6 text-lg font-semibold text-white">
                 <Tab className="text-left data-selected:not-data-focus:outline-hidden">
                   <span className="absolute inset-0 rounded-2xl" />
@@ -373,7 +373,7 @@ function FeaturesMobile() {
                 </div>
               </PhoneFrame>
               <div className="absolute inset-x-0 bottom-0 bg-violet-800/95 p-6 backdrop-blur-sm sm:p-10">
-                <feature.icon className="h-8 w-8 fill-amber-300" />
+                <feature.icon className="h-8 w-8 fill-[#FFA500]" />
                 <h3 className="mt-6 text-sm font-semibold text-white sm:text-lg">
                   {feature.name}
                 </h3>
@@ -419,7 +419,7 @@ export function PrimaryFeatures() {
     >
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight text-amber-300">
+          <h2 className="text-3xl font-bold tracking-tight text-[#FFA500]">
             HomeHub is your go-to guide for everything about your&nbsp;home.
           </h2>
           <p className="mt-2 text-lg text-white">
