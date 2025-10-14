@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
@@ -162,6 +163,11 @@ const page = () => {
         If you have any questions about this Privacy Policy or how your data is handled, please contact:
         {' '}<a href="mailto:home@homehubinfo.co.uk">home@homehubinfo.co.uk</a>
       </p>
+
+			<div className='mt-4'>
+				<Link href="../" className='underline'>Back to Homepage</Link>
+
+			</div>
     </main>
 	)
 }
