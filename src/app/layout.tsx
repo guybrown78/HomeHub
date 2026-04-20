@@ -31,11 +31,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={clsx('bg-gray-50 antialiased', rubik.variable)}>
-			<GoogleAnalytics 
-				GA_MEASUREMENT_ID='G-66VYYXLD36' 
-				ADS_MEASUREMENT_ID='AW-18100994958' 
-			/>
-      <body>{children}</body>
+      <body>
+				<GoogleAnalytics
+					GA_MEASUREMENT_ID="G-66VYYXLD36"
+					ADS_MEASUREMENT_ID="AW-18100994958"
+				/>
+				{children}
+			</body>
     </html>
   )
 }

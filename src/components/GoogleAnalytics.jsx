@@ -1,28 +1,13 @@
 'use client'
 
 import Script from 'next/script'
-import { usePathname, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
-import { pageview } from '@/libs/gtagHelper'
+import { Suspense } from 'react'
+import GoogleAnalyticsPageTracker from './GoogleAnalyticsPageTracker'
 
 export default function GoogleAnalytics({
   GA_MEASUREMENT_ID,
   ADS_MEASUREMENT_ID,
 }) {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-
-  useEffect(() => {
-    const query = searchParams.toString()
-    const url = query ? `${pathname}?${query}` : pathname
-
-    pageview({
-      gaId: GA_MEASUREMENT_ID,
-      adsId: ADS_MEASUREMENT_ID,
-      url,
-    })
-  }, [pathname, searchParams, GA_MEASUREMENT_ID, ADS_MEASUREMENT_ID])
-
   return (
     <>
       <Script
@@ -55,6 +40,13 @@ export default function GoogleAnalytics({
           `,
         }}
       />
+
+      <Suspense fallback={null}>
+        <GoogleAnalyticsPageTracker
+          GA_MEASUREMENT_ID={GA_MEASUREMENT_ID}
+          ADS_MEASUREMENT_ID={ADS_MEASUREMENT_ID}
+        />
+      </Suspense>
     </>
   )
 }
