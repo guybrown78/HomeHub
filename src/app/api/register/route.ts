@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
   await new Promise<void>((resolve, reject) => {
     new Airtable({ apiKey: token }).base(base)('homeHubRegister').create(
       [{ fields: { FirstName: firstName.trim(), LastName: lastName.trim(), Email: email, Role: role, SentDate: date } }],
-      (err) => (err ? reject(err) : resolve()),
+      (err: unknown) => (err ? reject(err) : resolve()),
     )
   })
 
