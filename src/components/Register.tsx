@@ -1,6 +1,5 @@
 'use client'
 
-import Airtable from 'airtable'
 import React, { useState } from 'react'
 import { Button } from './Button'
 import { Container } from './Container'
@@ -26,18 +25,6 @@ const Register = () => {
     role: '', // 'tenant' or 'landlord'
   })
 
-  // const formatDate = async (): Promise<string> => {
-  //   const d = new Date()
-  //   let month = '' + (d.getMonth() + 1)
-  //   let day = '' + d.getDate()
-  //   const year = d.getFullYear()
-
-  //   if (month.length < 2) month = '0' + month
-  //   if (day.length < 2) day = '0' + day
-
-  //   return [year, month, day].join('-')
-  // }
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
@@ -52,58 +39,21 @@ const Register = () => {
     setIsError(false)
     setIsLoading(true)
 
-    console.log('Form submitted:', formData)
+    try {
+      const res = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
 
-    // TODO: integrate with backend or webhook here
+      if (!res.ok) throw new Error('registration failed')
 
-    const d = new Date()
-    let month = '' + (d.getMonth() + 1)
-    let day = '' + d.getDate()
-    const year = d.getFullYear()
-
-    if (month.length < 2) month = '0' + month
-    if (day.length < 2) day = '0' + day
-
-    const date = [year, month, day].join('-')
-
-    console.log('date', date)
-
-    // Example Airtable API integration (commented out):
-    const fields = {
-      FirstName: formData.firstName!,
-      LastName: formData.lastName!,
-      Email: formData.email!,
-      Role: formData.role!,
-      SentDate: date,
+      setIsSuccess(true)
+    } catch {
+      setIsError(true)
+    } finally {
+      setIsLoading(false)
     }
-
-    console.log(fields)
-
-    const airtableToken: string = process.env
-      .NEXT_PUBLIC_AIRTABLE_PERSONAL_ACCESS_TOKEN as string
-    const airtableBase: string = process.env.NEXT_PUBLIC_AIRTABLE_BASE as string
-    const base = new Airtable({ apiKey: airtableToken }).base(airtableBase)
-
-    base('homeHubRegister').create(
-      [
-        {
-          fields,
-        },
-      ],
-      function (err: any, records: any) {
-        if (err) {
-          console.error(err)
-          setIsError(true)
-          setIsLoading(false)
-          return
-        }
-        records.forEach(function (record: any) {
-          console.log(record.getId())
-          setIsSuccess(true)
-          setIsLoading(false)
-        })
-      },
-    )
   }
 
   return (
