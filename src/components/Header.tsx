@@ -1,146 +1,221 @@
 'use client'
 
+import { useRef, useState } from 'react'
 import Link from 'next/link'
-import {
-  Popover,
-  PopoverButton,
-  PopoverBackdrop,
-  PopoverPanel,
-} from '@headlessui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
-import { NavLinks } from '@/components/NavLinks'
+
+const navSections = [
+  {
+    title: 'Platform',
+    links: [
+      { label: 'Resolve', href: '/platform/resolve' },
+      { label: 'Energy', href: '/platform/energy' },
+      { label: 'Community', href: '/platform/community' },
+      { label: 'Case Studies', href: '/platform/case-studies' },
+    ],
+  },
+  {
+    title: 'Landlords',
+    links: [
+      { label: 'Compliance & Regulation', href: '/landlords/compliance-regulation' },
+      { label: 'Repairs & Resolution', href: '/landlords/repairs-resolution' },
+      { label: 'Resident Engagement', href: '/landlords/resident-engagement' },
+      { label: 'Retrofit & Funding', href: '/landlords/retrofit-funding' },
+    ],
+  },
+  {
+    title: 'Residents',
+    links: [
+      { label: 'Tenants', href: '/residents/tenants' },
+      { label: 'Homeowners', href: '/residents/homeowners' },
+      { label: 'Contractors', href: '/residents/contractors' },
+      { label: 'Download App', href: '/residents/download-app' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Guides', href: '/resources/guides' },
+      { label: 'Insights', href: '/resources/insights' },
+      { label: "FAQ's", href: '/resources/faqs' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About', href: '/about' },
+      { label: 'Partners & Sponsors', href: '/partners' },
+      { label: 'Contact', href: '/contact' },
+      { label: 'Book a Demo', href: '/demo' },
+    ],
+  },
+]
+
+function ChevronDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
+      <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M5 6h14M5 18h14M5 12h14"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M5 6h14M5 18h14M5 12h14" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
 
-function ChevronUpIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" {...props}>
-      <path
-        d="M17 14l-5-5-5 5"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M6 18L18 6M6 6l12 12" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
 
-function MobileNavLink(
-  props: Omit<
-    React.ComponentPropsWithoutRef<typeof PopoverButton<typeof Link>>,
-    'as' | 'className'
-  >,
-) {
+function NavDropdown({
+  title,
+  links,
+}: {
+  title: string
+  links: { label: string; href: string }[]
+}) {
+  const [isOpen, setIsOpen] = useState(false)
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const open = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current)
+    setIsOpen(true)
+  }
+
+  const close = () => {
+    closeTimer.current = setTimeout(() => setIsOpen(false), 120)
+  }
+
   return (
-    <PopoverButton
-      as={Link}
-      className="block text-base/7 tracking-tight text-gray-700"
-      {...props}
-    />
+    <div onMouseEnter={open} onMouseLeave={close} className="relative">
+      <button
+        className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-violet-950"
+        aria-expanded={isOpen}
+      >
+        {title}
+        <ChevronDownIcon
+          className={`h-4 w-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+        />
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.15 }}
+            onMouseEnter={open}
+            onMouseLeave={close}
+            className="absolute left-0 top-full z-50 mt-2 w-56"
+          >
+            <div className="overflow-hidden rounded-xl bg-white shadow-xl ring-1 ring-black/5">
+              <div className="p-2">
+                {links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="block rounded-lg px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-violet-50 hover:text-violet-950"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   )
 }
 
 export function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
-    <header>
+    <header className="relative z-50">
       <nav>
-        <Container className="relative z-50 flex justify-between py-8">
-          <div className="relative z-10 flex items-center gap-16">
-            <Link href="/" aria-label="Home">
-              <Logo className="h-10 w-auto" />
-            </Link>
-            <div className="hidden lg:flex lg:gap-10">
-              {/* <NavLinks /> */}
-            </div>
+        <Container className="flex items-center justify-between py-6">
+          <Link href="/" aria-label="Home">
+            <Logo className="h-9 w-auto" />
+          </Link>
+
+          <div className="hidden items-center gap-8 lg:flex">
+            {navSections.map((section) => (
+              <NavDropdown key={section.title} title={section.title} links={section.links} />
+            ))}
           </div>
-          <div className="flex items-center gap-6">
-            {/* <Popover className="lg:hidden">
-              {({ open }) => (
-                <>
-                  <PopoverButton
-                    className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 focus:not-data-focus:outline-hidden active:stroke-gray-900"
-                    aria-label="Toggle site navigation"
-                  >
-                    {({ open }) =>
-                      open ? (
-                        <ChevronUpIcon className="h-6 w-6" />
-                      ) : (
-                        <MenuIcon className="h-6 w-6" />
-                      )
-                    }
-                  </PopoverButton>
-                  <AnimatePresence initial={false}>
-                    {open && (
-                      <>
-                        <PopoverBackdrop
-                          static
-                          as={motion.div}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="fixed inset-0 z-0 bg-gray-300/60 backdrop-blur-sm"
-                        />
-                        <PopoverPanel
-                          static
-                          as={motion.div}
-                          initial={{ opacity: 0, y: -32 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{
-                            opacity: 0,
-                            y: -32,
-                            transition: { duration: 0.2 },
-                          }}
-                          className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pt-32 pb-6 shadow-2xl shadow-gray-900/20"
-                        >
-                          <div className="space-y-4">
-                            <MobileNavLink href="/#features">
-                              Features
-                            </MobileNavLink>
-                            <MobileNavLink href="/#reviews">
-                              Reviews
-                            </MobileNavLink>
-                            <MobileNavLink href="/#pricing">
-                              Pricing
-                            </MobileNavLink>
-                            <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
-                          </div>
-                          <div className="mt-8 flex flex-col gap-4">
-                            <Button href="/login" variant="outline">
-                              Log in
-                            </Button>
-                            <Button href="#">Download the app</Button>
-                          </div>
-                        </PopoverPanel>
-                      </>
-                    )}
-                  </AnimatePresence>
-                </>
-              )}
-            </Popover> */}
-            <div className="flex items-center gap-6 max-lg:hidden">
-              {/* <Button href="/login" variant="outline">
-                Log in
-              </Button> */}
-              <Button href="/#register">Register</Button>
+
+          <div className="flex items-center gap-4">
+            <div className="hidden lg:block">
+              <Button href="/demo">Book a Demo</Button>
             </div>
+            <button
+              className="flex h-10 w-10 items-center justify-center rounded-lg stroke-gray-700 hover:bg-gray-100 lg:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle navigation"
+            >
+              {mobileMenuOpen ? (
+                <CloseIcon className="h-6 w-6" />
+              ) : (
+                <MenuIcon className="h-6 w-6" />
+              )}
+            </button>
           </div>
         </Container>
       </nav>
+
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="overflow-hidden border-t border-gray-100 bg-white shadow-lg lg:hidden"
+          >
+            <Container className="py-6">
+              {navSections.map((section) => (
+                <div key={section.title} className="mb-6">
+                  <p className="mb-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+                    {section.title}
+                  </p>
+                  <div className="space-y-1">
+                    {section.links.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-violet-50 hover:text-violet-950"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+              <div className="border-t border-gray-100 pt-4">
+                <Button href="/demo" className="w-full justify-center">
+                  Book a Demo
+                </Button>
+              </div>
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

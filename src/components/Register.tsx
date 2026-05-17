@@ -57,12 +57,11 @@ const Register = () => {
   }
 
   return (
-    <div className="bg-violet-950">
-      <section
-        id="register"
-        aria-label="Register your interest"
-        className="rounded-t-5xl bg-gray-50 py-20 sm:py-32"
-      >
+    <section
+      id="register"
+      aria-label="Register your interest"
+      className="-mt-10 rounded-t-5xl bg-gray-50 py-20 sm:py-32"
+    >
         <Container className="">
           <div className="mx-auto max-w-2xl sm:text-center">
             <h2 className="text-3xl font-bold tracking-tight text-violet-950">
@@ -231,8 +230,7 @@ const Register = () => {
             )}
           </form>
         </Container>
-      </section>
-    </div>
+    </section>
   )
 }
 
