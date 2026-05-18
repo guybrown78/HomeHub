@@ -37,7 +37,7 @@ const guideCategories = [
 export default function GuidesPage() {
   return (
     <>
-      <Section first className="bg-violet-950 py-20 sm:py-32">
+      <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Resources</p>
@@ -61,9 +61,9 @@ export default function GuidesPage() {
                   {cat.guides.map((guide) => (
                     <div key={guide.title} className="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
                       <div className="mb-3 h-1 w-10 rounded-full bg-amber-400" />
-                      <h3 className="font-semibold text-gray-900 group-hover:text-violet-950">{guide.title}</h3>
+                      <h3 className="font-semibold text-gray-900 group-hover:text-brand-950">{guide.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-gray-600">{guide.description}</p>
-                      <p className="mt-4 text-xs font-semibold text-violet-950">Read guide →</p>
+                      <p className="mt-4 text-xs font-semibold text-brand-950">Read guide →</p>
                     </div>
                   ))}
                 </div>
@@ -71,8 +71,8 @@ export default function GuidesPage() {
             ))}
           </div>
 
-          <div className="mt-16 rounded-2xl bg-violet-50 p-8">
-            <h2 className="text-xl font-bold text-violet-950">Can&apos;t find what you&apos;re looking for?</h2>
+          <div className="mt-16 rounded-2xl bg-brand-50 p-8">
+            <h2 className="text-xl font-bold text-brand-950">Can&apos;t find what you&apos;re looking for?</h2>
             <p className="mt-2 text-gray-600">Our support team is here to help. Get in touch and we&apos;ll point you in the right direction.</p>
             <div className="mt-4">
               <Button href="/contact">Contact Support</Button>

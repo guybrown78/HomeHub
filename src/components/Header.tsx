@@ -55,7 +55,7 @@ function NavDropdown({
   return (
     <div onMouseEnter={open} onMouseLeave={close} className="relative">
       <button
-        className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-violet-950"
+        className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-brand-950"
         aria-expanded={isOpen}
       >
         {title}
@@ -82,7 +82,7 @@ function NavDropdown({
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block rounded-lg px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-violet-50 hover:text-violet-950"
+                    className="block rounded-lg px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-brand-50 hover:text-brand-950"
                   >
                     {link.label}
                   </Link>
@@ -153,7 +153,7 @@ export function Header() {
                         key={link.href}
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-violet-50 hover:text-violet-950"
+                        className="block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-brand-50 hover:text-brand-950"
                       >
                         {link.label}
                       </Link>

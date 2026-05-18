@@ -47,7 +47,7 @@ const partnerBenefits = [
 export default function PartnersPage() {
   return (
     <>
-      <Section first className="bg-violet-950 py-20 sm:py-32">
+      <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Company</p>
@@ -73,7 +73,7 @@ export default function PartnersPage() {
                 <p className="mt-2 text-gray-600">{pt.description}</p>
                 <div className="mt-6 flex flex-wrap gap-3">
                   {pt.partners.map((p) => (
-                    <span key={p} className="rounded-full bg-violet-50 px-4 py-2 text-sm font-medium text-violet-950">
+                    <span key={p} className="rounded-full bg-brand-50 px-4 py-2 text-sm font-medium text-brand-950">
                       {p}
                     </span>
                   ))}
@@ -95,8 +95,8 @@ export default function PartnersPage() {
             </div>
           </div>
 
-          <div className="mt-16 rounded-2xl bg-violet-50 p-8 sm:p-12">
-            <h2 className="text-2xl font-bold text-violet-950">Ready to explore a partnership?</h2>
+          <div className="mt-16 rounded-2xl bg-brand-50 p-8 sm:p-12">
+            <h2 className="text-2xl font-bold text-brand-950">Ready to explore a partnership?</h2>
             <p className="mt-3 text-gray-600">
               Get in touch with our partnerships team to discuss how we can work together.
             </p>

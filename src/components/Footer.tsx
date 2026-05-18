@@ -21,7 +21,7 @@ function YouTubeIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 
 export function Footer() {
   return (
-    <footer className="rounded-t-5xl bg-violet-950 pt-12 sm:pt-16">
+    <footer className="rounded-t-5xl bg-brand-950 pt-12 sm:pt-16">
       <Container>
         <div className="grid grid-cols-2 gap-10 border-b border-white/10 pb-12 sm:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr]">
           <div className="col-span-2 sm:col-span-3 lg:col-span-1">
@@ -91,6 +91,9 @@ export function Footer() {
           <p className="hidden text-xs text-white/50 lg:block">
             Let&apos;s make tenant engagement better, together.
           </p>
+          <Link href="/design-system" className="text-xs text-white/30 transition-colors hover:text-white/60">
+            ↗ Design System
+          </Link>
         </div>
       </Container>
     </footer>

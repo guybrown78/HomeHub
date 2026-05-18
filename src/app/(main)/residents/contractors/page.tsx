@@ -37,7 +37,7 @@ const benefits = [
 export default function ContractorsPage() {
   return (
     <>
-      <Section first className="bg-violet-950 py-20 sm:py-32">
+      <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Residents</p>
@@ -74,8 +74,8 @@ export default function ContractorsPage() {
             ))}
           </div>
 
-          <div className="mt-16 rounded-2xl bg-violet-50 p-8 sm:p-12">
-            <h2 className="text-2xl font-bold text-violet-950">Join our contractor network</h2>
+          <div className="mt-16 rounded-2xl bg-brand-50 p-8 sm:p-12">
+            <h2 className="text-2xl font-bold text-brand-950">Join our contractor network</h2>
             <p className="mt-3 text-gray-600">
               Interested in becoming an approved HomeHub contractor? Get in touch with our team.
             </p>

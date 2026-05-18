@@ -76,7 +76,7 @@ const faqGroups = [
 export default function FaqsPage() {
   return (
     <>
-      <Section first className="bg-violet-950 py-20 sm:py-32">
+      <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Resources</p>
@@ -108,8 +108,8 @@ export default function FaqsPage() {
             ))}
           </div>
 
-          <div className="mt-16 max-w-3xl rounded-2xl bg-violet-50 p-8">
-            <h2 className="text-xl font-bold text-violet-950">Still have questions?</h2>
+          <div className="mt-16 max-w-3xl rounded-2xl bg-brand-50 p-8">
+            <h2 className="text-xl font-bold text-brand-950">Still have questions?</h2>
             <p className="mt-2 text-gray-600">
               Our team is happy to answer any questions you have about HomeHub.
             </p>

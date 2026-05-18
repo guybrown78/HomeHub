@@ -1,225 +1,210 @@
-import { useId } from 'react'
-
 import { Container } from '@/components/Container'
+import { Button } from '@/components/Button'
+import {
+  LuWrench,
+  LuShield,
+  LuMessageSquare,
+  LuClipboard,
+  LuZap,
+  LuBell,
+  LuHouse,
+  LuMapPin,
+  LuChevronRight,
+} from 'react-icons/lu'
 
-const features = [
+const providerFeatures = [
   {
-    name: 'Invest any amount',
-    description:
-      'Whether it’s $1 or $1,000,000, we can put your money to work for you.',
-    icon: DeviceArrowIcon,
+    Icon: LuWrench,
+    title: 'Repairs & Resolution',
+    desc: 'Track every maintenance request from report to resolution with a full audit trail.',
   },
   {
-    name: 'Build a balanced portfolio',
-    description:
-      'Invest in different industries to find the most opportunities to win huge.',
-    icon: DeviceCardsIcon,
+    Icon: LuShield,
+    title: 'Compliance Management',
+    desc: 'Automated reminders for gas, fire, and electrical certificates before deadlines hit.',
   },
   {
-    name: 'Trade in real-time',
-    description:
-      'Get insider tips on big stock moves and act on them within seconds.',
-    icon: DeviceClockIcon,
+    Icon: LuMessageSquare,
+    title: 'Resident Communication',
+    desc: 'Send targeted updates and surveys — keep residents informed and engaged at scale.',
   },
   {
-    name: 'Profit from your network',
-    description:
-      'Invite new insiders to get tips faster and beat even other Pocket users.',
-    icon: DeviceListIcon,
-  },
-  {
-    name: 'Encrypted and anonymized',
-    description:
-      'Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.',
-    icon: DeviceLockIcon,
-  },
-  {
-    name: 'Portfolio tracking',
-    description:
-      'Watch your investments grow exponentially, leaving other investors in the dust.',
-    icon: DeviceChartIcon,
+    Icon: LuClipboard,
+    title: 'Portfolio Reporting',
+    desc: 'Property-level insights and one-click compliance exports across your whole portfolio.',
   },
 ]
 
-function DeviceArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M9 0a4 4 0 00-4 4v24a4 4 0 004 4h14a4 4 0 004-4V4a4 4 0 00-4-4H9zm0 2a2 2 0 00-2 2v24a2 2 0 002 2h14a2 2 0 002-2V4a2 2 0 00-2-2h-1.382a1 1 0 00-.894.553l-.448.894a1 1 0 01-.894.553h-6.764a1 1 0 01-.894-.553l-.448-.894A1 1 0 0010.382 2H9z"
-        fill="#737373"
-      />
-      <path
-        d="M12 25l8-8m0 0h-6m6 0v6"
-        stroke="#171717"
-        strokeWidth={2}
-        strokeLinecap="round"
-      />
-      <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
-    </svg>
-  )
-}
-
-function DeviceCardsIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  let id = useId()
-
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M9 0a4 4 0 00-4 4v24a4 4 0 004 4h14a4 4 0 004-4V4a4 4 0 00-4-4H9zm0 2a2 2 0 00-2 2v24a2 2 0 002 2h14a2 2 0 002-2V4a2 2 0 00-2-2h-1.382a1 1 0 00-.894.553l-.448.894a1 1 0 01-.894.553h-6.764a1 1 0 01-.894-.553l-.448-.894A1 1 0 0010.382 2H9z"
-        fill="#737373"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M9 13a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H10a1 1 0 01-1-1v-2zm0 6a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H10a1 1 0 01-1-1v-2zm1 5a1 1 0 00-1 1v2a1 1 0 001 1h12a1 1 0 001-1v-2a1 1 0 00-1-1H10z"
-        fill={`url(#${id}-gradient)`}
-      />
-      <rect x={9} y={6} width={14} height={4} rx={1} fill="#171717" />
-      <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
-      <defs>
-        <linearGradient
-          id={`${id}-gradient`}
-          x1={16}
-          y1={12}
-          x2={16}
-          y2={28}
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stopColor="#737373" />
-          <stop offset={1} stopColor="#737373" stopOpacity={0} />
-        </linearGradient>
-      </defs>
-    </svg>
-  )
-}
-
-function DeviceClockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
-      <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M5 4a4 4 0 014-4h14a4 4 0 014 4v10h-2V4a2 2 0 00-2-2h-1.382a1 1 0 00-.894.553l-.448.894a1 1 0 01-.894.553h-6.764a1 1 0 01-.894-.553l-.448-.894A1 1 0 0010.382 2H9a2 2 0 00-2 2v24a2 2 0 002 2h5v2H9a4 4 0 01-4-4V4z"
-        fill="#737373"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M24 32a8 8 0 100-16 8 8 0 000 16zm1-8.414V19h-2v5.414l4 4L28.414 27 25 23.586z"
-        fill="#171717"
-      />
-    </svg>
-  )
-}
-
-function DeviceListIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M9 0a4 4 0 00-4 4v24a4 4 0 004 4h14a4 4 0 004-4V4a4 4 0 00-4-4H9zm0 2a2 2 0 00-2 2v24a2 2 0 002 2h14a2 2 0 002-2V4a2 2 0 00-2-2h-1.382a1 1 0 00-.894.553l-.448.894a1 1 0 01-.894.553h-6.764a1 1 0 01-.894-.553l-.448-.894A1 1 0 0010.382 2H9z"
-        fill="#737373"
-      />
-      <circle cx={11} cy={14} r={2} fill="#171717" />
-      <circle cx={11} cy={20} r={2} fill="#171717" />
-      <circle cx={11} cy={26} r={2} fill="#171717" />
-      <path
-        d="M16 14h6M16 20h6M16 26h6"
-        stroke="#737373"
-        strokeWidth={2}
-        strokeLinecap="square"
-      />
-      <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
-    </svg>
-  )
-}
-
-function DeviceLockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
-      <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M5 4a4 4 0 014-4h14a4 4 0 014 4v10h-2V4a2 2 0 00-2-2h-1.382a1 1 0 00-.894.553l-.448.894a1 1 0 01-.894.553h-6.764a1 1 0 01-.894-.553l-.448-.894A1 1 0 0010.382 2H9a2 2 0 00-2 2v24a2 2 0 002 2h5v2H9a4 4 0 01-4-4V4z"
-        fill="#737373"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M18 19.5a3.5 3.5 0 117 0V22a2 2 0 012 2v6a2 2 0 01-2 2h-7a2 2 0 01-2-2v-6a2 2 0 012-2v-2.5zm2 2.5h3v-2.5a1.5 1.5 0 00-3 0V22z"
-        fill="#171717"
-      />
-    </svg>
-  )
-}
-
-function DeviceChartIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M9 0a4 4 0 00-4 4v24a4 4 0 004 4h14a4 4 0 004-4V4a4 4 0 00-4-4H9zm0 2a2 2 0 00-2 2v24a2 2 0 002 2h14a2 2 0 002-2V4a2 2 0 00-2-2h-1.382a1 1 0 00-.894.553l-.448.894a1 1 0 01-.894.553h-6.764a1 1 0 01-.894-.553l-.448-.894A1 1 0 0010.382 2H9z"
-        fill="#737373"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M23 13.838V26a2 2 0 01-2 2H11a2 2 0 01-2-2V15.65l2.57 3.212a1 1 0 001.38.175L15.4 17.2a1 1 0 011.494.353l1.841 3.681c.399.797 1.562.714 1.843-.13L23 13.837z"
-        fill="#171717"
-      />
-      <path
-        d="M10 12h12"
-        stroke="#737373"
-        strokeWidth={2}
-        strokeLinecap="square"
-      />
-      <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
-    </svg>
-  )
-}
+const residentFeatures = [
+  {
+    Icon: LuZap,
+    title: 'Energy & EPC Insights',
+    desc: "Understand your home's energy rating and get personalised tips to cut bills.",
+  },
+  {
+    Icon: LuBell,
+    title: 'Raise a Repair',
+    desc: 'Report maintenance issues and track progress in real time — no phone queues.',
+  },
+  {
+    Icon: LuHouse,
+    title: 'Your Property Guidebook',
+    desc: 'Everything you need to know about your home, from contacts to appliance guides.',
+  },
+  {
+    Icon: LuMapPin,
+    title: 'Local Support Network',
+    desc: 'Connect with local services and community resources close to where you live.',
+  },
+]
 
 export function SecondaryFeatures() {
   return (
     <section
       id="secondary-features"
-      aria-label="Features for building a portfolio"
+      aria-label="Features for housing providers and residents"
       className="py-20 sm:py-32"
     >
       <Container>
-        <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-3xl font-medium tracking-tight text-gray-900">
-            Now is the time to build your portfolio.
+        {/* Section intro */}
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-4xl font-bold tracking-tight text-fg">
+            Everything under one roof.
           </h2>
-          <p className="mt-2 text-lg text-gray-600">
-            With typical market returns, you have to start young to secure your
-            future. With Pocket, it’s never too late to build your nest egg.
+          <p className="mt-4 text-lg text-fg-muted">
+            Whether you manage hundreds of properties or just your own home —
+            HomeHub is built to make every experience better.
           </p>
         </div>
-        <ul
-          role="list"
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
-        >
-          {features.map((feature) => (
-            <li
-              key={feature.name}
-              className="rounded-2xl border border-gray-200 p-8"
+
+        {/* Dual audience panels */}
+        <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-2">
+          {/* ── Housing Providers ─────────────────────────────── */}
+          <div
+            data-theme="brand"
+            className="relative overflow-hidden rounded-4xl bg-bg p-8 lg:p-10"
+          >
+            {/* Decorative blob */}
+            <div
+              className="pointer-events-none absolute -right-16 -top-16 h-60 w-60 opacity-[0.07]"
+              aria-hidden
             >
-              <feature.icon className="h-8 w-8" />
-              <h3 className="mt-6 font-semibold text-gray-900">
-                {feature.name}
+              <svg viewBox="0 0 240 240" fill="none">
+                <path
+                  d="M190 35 C228 35,244 75,228 132 C212 189,168 226,112 220 C56 214,18 174,14 118 C10 62,48 16,105 12 C162 8,152 35,190 35Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
+
+            <div className="relative">
+              <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-fg-muted">
+                For Housing Providers
+              </span>
+
+              <h3 className="mt-5 text-2xl font-bold leading-tight text-fg lg:text-3xl">
+                Manage smarter,
+                <br />
+                deliver better.
               </h3>
-              <p className="mt-2 text-gray-700">{feature.description}</p>
-            </li>
-          ))}
-        </ul>
+              <p className="mt-2 text-sm text-fg-muted">
+                Give your team the tools to deliver excellent service across
+                your entire portfolio — from day one.
+              </p>
+
+              <ul className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                {providerFeatures.map(({ Icon, title, desc }) => (
+                  <li key={title} className="flex gap-3.5">
+                    <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-white/10">
+                      <Icon
+                        className="h-5 w-5 text-accent-300"
+                        strokeWidth={1.75}
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-fg">{title}</p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
+                        {desc}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-10">
+                <Button href="/demo" variant="solid" color="white">
+                  Book a demo
+                  <LuChevronRight className="-mr-0.5 h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Residents ─────────────────────────────────────── */}
+          <div
+            data-theme="accent"
+            className="relative overflow-hidden rounded-4xl bg-bg p-8 lg:p-10"
+          >
+            {/* Decorative blob */}
+            <div
+              className="pointer-events-none absolute -right-14 -top-14 h-56 w-56 opacity-[0.12]"
+              aria-hidden
+            >
+              <svg viewBox="0 0 224 224" fill="none">
+                <path
+                  d="M175 30 C210 30,224 68,210 120 C196 172,158 208,105 202 C52 196,17 160,13 108 C9 56,44 12,97 8 C150 4,140 30,175 30Z"
+                  fill="currentColor"
+                  className="text-brand-950"
+                />
+              </svg>
+            </div>
+
+            <div className="relative">
+              <span className="inline-flex items-center rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">
+                For Residents
+              </span>
+
+              <h3 className="mt-5 text-2xl font-bold leading-tight text-fg lg:text-3xl">
+                Your home,
+                <br />
+                your way.
+              </h3>
+              <p className="mt-2 text-sm text-fg-muted">
+                Get the support, information, and tools you need to truly feel
+                at home — wherever that is.
+              </p>
+
+              <ul className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2">
+                {residentFeatures.map(({ Icon, title, desc }) => (
+                  <li key={title} className="flex gap-3.5">
+                    <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-brand-100">
+                      <Icon
+                        className="h-5 w-5 text-brand-700"
+                        strokeWidth={1.75}
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-fg">{title}</p>
+                      <p className="mt-0.5 text-xs leading-relaxed text-fg-muted">
+                        {desc}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-10">
+                <a
+                  href="#register"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-fg transition-opacity hover:opacity-60"
+                >
+                  Register your interest
+                  <LuChevronRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </Container>
     </section>
   )

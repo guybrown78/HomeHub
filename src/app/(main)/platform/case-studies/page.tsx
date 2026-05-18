@@ -37,7 +37,7 @@ const caseStudies = [
 export default function CaseStudiesPage() {
   return (
     <>
-      <Section first className="bg-violet-950 py-20 sm:py-32">
+      <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Platform</p>
@@ -66,15 +66,15 @@ export default function CaseStudiesPage() {
                     </span>
                   ))}
                 </div>
-                <p className="mt-4 text-2xl font-bold text-violet-950">{cs.outcome}</p>
+                <p className="mt-4 text-2xl font-bold text-brand-950">{cs.outcome}</p>
                 <p className="mt-1 text-sm font-medium text-gray-500">{cs.org}</p>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-gray-600">{cs.description}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-16 rounded-2xl bg-violet-50 p-8 sm:p-12">
-            <h2 className="text-2xl font-bold text-violet-950">Want to be our next success story?</h2>
+          <div className="mt-16 rounded-2xl bg-brand-50 p-8 sm:p-12">
+            <h2 className="text-2xl font-bold text-brand-950">Want to be our next success story?</h2>
             <p className="mt-3 text-gray-600">
               Book a demo to see how HomeHub can work for your organisation.
             </p>

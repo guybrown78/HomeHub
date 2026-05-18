@@ -34,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={clsx('bg-gray-50 antialiased', rubik.variable)}>
+    <html lang="en" className={clsx('bg-page antialiased', rubik.variable)}>
       <body>
         <GoogleAnalytics
           GA_MEASUREMENT_ID="G-66VYYXLD36"

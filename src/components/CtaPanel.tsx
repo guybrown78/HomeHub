@@ -30,10 +30,10 @@ export function CtaPanel() {
       <Container>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="rounded-2xl bg-white/40 p-8 sm:p-10">
-            <h2 className="text-2xl font-bold text-violet-950 sm:text-3xl">
+            <h2 className="text-2xl font-bold text-brand-950 sm:text-3xl">
               For Landlords &amp; Providers
             </h2>
-            <p className="mt-4 text-violet-950/75 leading-relaxed">
+            <p className="mt-4 text-brand-950/75 leading-relaxed">
               See how HomeHub can transform your property management and resident engagement.
             </p>
             <div className="mt-8">
@@ -44,10 +44,10 @@ export function CtaPanel() {
           </div>
 
           <div className="rounded-2xl bg-white/40 p-8 sm:p-10">
-            <h2 className="text-2xl font-bold text-violet-950 sm:text-3xl">
+            <h2 className="text-2xl font-bold text-brand-950 sm:text-3xl">
               For Residents
             </h2>
-            <p className="mt-4 text-violet-950/75 leading-relaxed">
+            <p className="mt-4 text-brand-950/75 leading-relaxed">
               Download the app to connect with your housing provider and manage your home.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">

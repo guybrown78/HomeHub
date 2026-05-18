@@ -36,7 +36,7 @@ const cookieTypes = [
 export default function CookiesPage() {
   return (
     <>
-      <Section first className="bg-violet-950 py-20 sm:py-28">
+      <Section first className="bg-brand-950 py-20 sm:py-28">
         <Container>
           <div className="max-w-3xl">
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">Cookie Policy</h1>
@@ -65,7 +65,7 @@ export default function CookiesPage() {
                 <div key={type.name} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
                   <div className="flex items-center justify-between">
                     <h3 className="font-bold text-gray-900">{type.name}</h3>
-                    <span className={`rounded-full px-3 py-1 text-xs font-semibold ${type.required ? 'bg-violet-100 text-violet-700' : 'bg-gray-100 text-gray-600'}`}>
+                    <span className={`rounded-full px-3 py-1 text-xs font-semibold ${type.required ? 'bg-brand-100 text-brand-700' : 'bg-gray-100 text-gray-600'}`}>
                       {type.required ? 'Always Active' : 'Optional'}
                     </span>
                   </div>

@@ -55,7 +55,7 @@ function GooglePlayBadge() {
 export default function DownloadAppPage() {
   return (
     <>
-      <Section first className="bg-violet-950 py-20 sm:py-32">
+      <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Residents</p>
@@ -87,7 +87,7 @@ export default function DownloadAppPage() {
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2">
             {steps.map((step) => (
               <div key={step.step} className="flex gap-5 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-                <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-violet-950 text-sm font-bold text-white">
+                <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-brand-950 text-sm font-bold text-white">
                   {step.step}
                 </div>
                 <div>
@@ -106,7 +106,7 @@ export default function DownloadAppPage() {
               HomeHub is available to residents whose housing provider has signed up to the platform. If your landlord isn&apos;t using HomeHub yet, ask them to get in touch.
             </p>
             <div className="mt-6">
-              <Link href="/contact" className="text-sm font-semibold text-violet-950 hover:underline">
+              <Link href="/contact" className="text-sm font-semibold text-brand-950 hover:underline">
                 Ask your landlord to sign up →
               </Link>
             </div>

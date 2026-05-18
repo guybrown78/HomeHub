@@ -3,9 +3,9 @@ import clsx from 'clsx'
 
 const baseStyles = {
   solid:
-    'inline-flex justify-center rounded-full py-2 px-3 text-sm font-semibold transition-colors',
+    'inline-flex items-center justify-center gap-2 rounded-full py-2 px-3 text-sm font-semibold transition-colors cursor-pointer',
   outline:
-    'inline-flex justify-center rounded-full border py-[calc(--spacing(2)-1px)] px-[calc(--spacing(3)-1px)] text-sm transition-colors',
+    'inline-flex items-center justify-center gap-2 rounded-full border py-[calc(--spacing(2)-1px)] px-[calc(--spacing(3)-1px)] text-sm transition-colors cursor-pointer',
 }
 
 const variantStyles = {
@@ -13,10 +13,10 @@ const variantStyles = {
     cyan: 'relative overflow-hidden bg-cyan-500 text-white before:absolute before:inset-0 active:before:bg-transparent hover:before:bg-white/10 active:bg-cyan-600 active:text-white/80 before:transition-colors',
     white:
       'bg-white text-cyan-900 hover:bg-white/90 active:bg-white/90 active:text-cyan-900/70',
-    violet: 'bg-violet-950 text-white hover:bg-violet-900 active:bg-violet-800 active:text-white/80',
+    violet: 'bg-brand-950 text-white hover:bg-brand-900 active:bg-brand-800 active:text-white/80',
   },
   outline: {
-   violet: 'border-violet-950 text-violet-950 hover:border-violet-900 active:bg-violet-800 active:text-white/80',
+    violet: 'border-brand-950 text-brand-950 hover:border-brand-900 active:bg-brand-800 active:text-white/80',
   },
 }
 

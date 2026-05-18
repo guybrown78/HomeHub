@@ -49,7 +49,7 @@ const insights = [
 export default function InsightsPage() {
   return (
     <>
-      <Section first className="bg-violet-950 py-20 sm:py-32">
+      <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Resources</p>
@@ -74,9 +74,9 @@ export default function InsightsPage() {
                   </span>
                   <span className="text-xs text-gray-400">{insight.date}</span>
                 </div>
-                <h2 className="mt-4 text-lg font-bold text-gray-900 group-hover:text-violet-950">{insight.title}</h2>
+                <h2 className="mt-4 text-lg font-bold text-gray-900 group-hover:text-brand-950">{insight.title}</h2>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-600">{insight.description}</p>
-                <p className="mt-6 text-xs font-semibold text-violet-950">Read insight →</p>
+                <p className="mt-6 text-xs font-semibold text-brand-950">Read insight →</p>
               </article>
             ))}
           </div>

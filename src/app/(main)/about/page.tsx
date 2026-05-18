@@ -36,7 +36,7 @@ const stats = [
 export default function AboutPage() {
   return (
     <>
-      <Section first className="bg-violet-950 py-20 sm:py-32">
+      <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Company</p>
@@ -74,8 +74,8 @@ export default function AboutPage() {
             <div>
               <div className="grid grid-cols-2 gap-6">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-2xl bg-violet-50 p-8 text-center">
-                    <p className="text-4xl font-bold text-violet-950">{stat.value}</p>
+                  <div key={stat.label} className="rounded-2xl bg-brand-50 p-8 text-center">
+                    <p className="text-4xl font-bold text-brand-950">{stat.value}</p>
                     <p className="mt-2 text-sm text-gray-600">{stat.label}</p>
                   </div>
                 ))}

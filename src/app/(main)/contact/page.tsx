@@ -37,7 +37,7 @@ const contactOptions = [
 export default function ContactPage() {
   return (
     <>
-      <Section first className="bg-violet-950 py-20 sm:py-32">
+      <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Company</p>
@@ -74,7 +74,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <div className="rounded-2xl bg-violet-950 p-8 text-white sm:p-10">
+              <div className="rounded-2xl bg-brand-950 p-8 text-white sm:p-10">
                 <h2 className="text-2xl font-bold">Send us a message</h2>
                 <p className="mt-2 text-white/70 text-sm">We aim to respond to all enquiries within one business day.</p>
                 <form className="mt-8 space-y-5" action="#" method="POST">
