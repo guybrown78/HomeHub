@@ -193,7 +193,7 @@ function InviteScreen(props: ScreenProps) {
     //   className="rounded-[36px] overflow-hidden"
     // >
     <div className="">
-      <Image className="" src={supportScreen} alt="" unoptimized />
+      <Image className="" src={supportScreen} alt="Tenant support request screen" />
     </div>
 
     // </MotionAppScreenBody>
@@ -209,7 +209,7 @@ function StocksScreen(props: ScreenProps) {
     //   className="rounded-[36px] overflow-hidden"
     // >
     <div className="">
-      <Image src={epcScreen} alt="" unoptimized />
+      <Image src={epcScreen} alt="Energy performance certificate insights screen" />
     </div>
 
     // </MotionAppScreenBody>
@@ -225,7 +225,7 @@ function InvestScreen(props: ScreenProps) {
         className="rounded-[36px] overflow-hidden"
       > */}
       <div className="">
-        <Image src={guideScreen} alt="" unoptimized />
+        <Image src={guideScreen} alt="Property guidebook screen" />
       </div>
 
       {/* </MotionAppScreenBody> */}

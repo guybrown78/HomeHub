@@ -245,7 +245,7 @@ export function AppDemo() {
             </div>
           </div>
         </div> */}
-				<Image className="mt-6" src={tipsScreen} alt='' unoptimized />
+				<Image className="mt-6" src={tipsScreen} alt="Energy saving tips and advice screen" />
       </AppScreen.Body>
     </AppScreen>
   )

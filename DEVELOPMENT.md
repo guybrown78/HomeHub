@@ -40,3 +40,31 @@ Tailwind CSS v4 with PostCSS. The `tailwind.config.ts` at the root is only used 
 ### Component conventions
 
 All shared UI lives in `src/components/`. Primitive layout components (`Container`, `Button`, `Fields`, `PhoneFrame`) are reused across the marketing sections. `AppDemo.tsx` / `AppScreen.tsx` render the animated phone mockup shown in the hero.
+
+### Stacked card section effect
+
+Every page uses a **stacked card** visual pattern: sections have large rounded top corners and each section physically overlaps the one above it, so the rounded corner arc sits inside the previous section's colour zone — giving the impression of layered cards.
+
+This is implemented via `src/components/Section.tsx`:
+
+```tsx
+<Section first className="bg-violet-950 py-20 sm:py-32">
+  {/* hero content */}
+</Section>
+
+<Section className="bg-gray-50 py-16 sm:py-24">
+  {/* feature content */}
+</Section>
+```
+
+**How it works:**
+- Every `<Section>` gets `rounded-t-5xl` (= `2.5rem` border-radius, defined in `@theme` as `--radius-5xl`).
+- Without `first`: adds `-mt-10` (= `2.5rem` negative margin), pulling the section up by exactly the border-radius amount so the arc overlaps into the previous section's colour zone.
+- With `first`: no negative margin — used on the opening (hero) section of each page so it doesn't pull into the header.
+
+**Rules to follow when adding new pages or sections:**
+- Always use `<Section first>` on the hero (first section) of a page.
+- Always use `<Section>` (no `first`) on every subsequent section.
+- Always set an explicit background colour (`bg-violet-950`, `bg-gray-50`, `bg-amber-300`, etc.) on every `<Section>` — without one the section is transparent and the stacking breaks.
+- Cards or panels that sit inside a `bg-gray-50` section should have explicit `bg-white` so they stand out.
+- The `CtaPanel` and `Footer` in `Layout.tsx` extend this same pattern at the layout level — do not add `-mt-10` to those manually.
