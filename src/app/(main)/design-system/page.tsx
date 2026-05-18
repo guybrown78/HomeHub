@@ -1,7 +1,11 @@
 import { type Metadata } from 'next'
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
-import { TextField, SelectField } from '@/components/Fields'
+import { TextField, SelectField, Textarea } from '@/components/Fields'
+import { Callout } from '@/components/ui/Callout'
+import { Card } from '@/components/ui/Card'
+import { IllustrationCard } from '@/components/ui/IllustrationCard'
+import { Blob } from '@/components/ui/Blob'
 import {
   LuHouse,
   LuBell,
@@ -102,119 +106,6 @@ function Swatch({
   )
 }
 
-/* ── Card demos ────────────────────────────────────────────── */
-function DemoCard({
-  children,
-  className = '',
-}: {
-  children: React.ReactNode
-  className?: string
-}) {
-  return (
-    <div className={`rounded-2xl border border-border bg-card p-6 shadow-sm ${className}`}>
-      {children}
-    </div>
-  )
-}
-
-/* ── Callout ───────────────────────────────────────────────── */
-type CalloutVariant = 'info' | 'warning' | 'success' | 'neutral'
-
-const calloutConfig: Record<
-  CalloutVariant,
-  { bg: string; border: string; iconColor: string; Icon: React.ElementType; label: string }
-> = {
-  info: {
-    bg: 'bg-brand-50',
-    border: 'border-brand-200',
-    iconColor: 'text-brand-600',
-    Icon: LuInfo,
-    label: 'Information',
-  },
-  warning: {
-    bg: 'bg-accent-100',
-    border: 'border-accent-300',
-    iconColor: 'text-accent-700',
-    Icon: LuTriangleAlert,
-    label: 'Note',
-  },
-  success: {
-    bg: 'bg-green-50',
-    border: 'border-green-200',
-    iconColor: 'text-green-600',
-    Icon: LuCircleCheck,
-    label: 'Success',
-  },
-  neutral: {
-    bg: 'bg-gray-50',
-    border: 'border-gray-200',
-    iconColor: 'text-gray-500',
-    Icon: LuInfo,
-    label: 'Note',
-  },
-}
-
-function Callout({
-  variant,
-  title,
-  children,
-}: {
-  variant: CalloutVariant
-  title: string
-  children: React.ReactNode
-}) {
-  const c = calloutConfig[variant]
-  return (
-    <div className={`flex gap-3 rounded-xl border p-4 ${c.bg} ${c.border}`}>
-      <c.Icon className={`mt-0.5 h-5 w-5 flex-none ${c.iconColor}`} />
-      <div>
-        <p className="text-sm font-semibold text-fg">{title}</p>
-        <p className="mt-0.5 text-sm text-fg-muted">{children}</p>
-      </div>
-    </div>
-  )
-}
-
-/* ── Illustrated card (blob style) ────────────────────────── */
-function IllustrationCard({
-  blobColor,
-  icon: Icon,
-  title,
-  description,
-}: {
-  blobColor: string
-  icon: React.ElementType
-  title: string
-  description: string
-}) {
-  return (
-    <div className="flex items-center gap-5 rounded-2xl border border-border bg-card p-5 shadow-sm">
-      <div
-        className="relative flex h-20 w-20 flex-none items-center justify-center overflow-hidden rounded-2xl"
-        style={{ backgroundColor: blobColor }}
-      >
-        <svg
-          viewBox="0 0 80 80"
-          fill="none"
-          className="absolute inset-0 h-full w-full"
-          aria-hidden
-        >
-          <path
-            d="M60 10 C80 10, 80 30, 70 50 C60 70, 40 80, 20 70 C0 60, 0 40, 10 20 C20 0, 40 10, 60 10Z"
-            fill="currentColor"
-            fillOpacity="0.25"
-            className="text-white"
-          />
-        </svg>
-        <Icon className="relative z-10 h-9 w-9 text-brand-700" strokeWidth={1.75} />
-      </div>
-      <div>
-        <p className="font-bold text-fg">{title}</p>
-        <p className="mt-0.5 text-sm text-fg-muted">{description}</p>
-      </div>
-    </div>
-  )
-}
 
 /* ── Nav items ─────────────────────────────────────────────── */
 const navItems = [
@@ -674,7 +565,7 @@ export default function DesignSystemPage() {
 
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {/* Default card */}
-            <DemoCard>
+            <Card>
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50">
                 <LuHouse className="h-5 w-5 text-brand-700" strokeWidth={1.75} />
               </div>
@@ -686,10 +577,10 @@ export default function DesignSystemPage() {
               <a href="#" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-600">
                 Learn more <LuChevronRight className="h-3.5 w-3.5" />
               </a>
-            </DemoCard>
+            </Card>
 
             {/* Muted card */}
-            <div className="rounded-2xl bg-card-muted p-6">
+            <Card variant="muted">
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gray-200">
                 <LuFileText className="h-5 w-5 text-gray-600" strokeWidth={1.75} />
               </div>
@@ -698,10 +589,10 @@ export default function DesignSystemPage() {
                 No shadow, gray-50 background. Use for secondary or supporting content that should
                 recede visually.
               </p>
-            </div>
+            </Card>
 
             {/* Featured card */}
-            <div data-theme="brand" className="rounded-2xl bg-bg p-6">
+            <Card theme="brand">
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-white/15">
                 <LuZap className="h-5 w-5 text-accent-300" strokeWidth={1.75} />
               </div>
@@ -710,10 +601,10 @@ export default function DesignSystemPage() {
                 Dark purple surface for featured or highlighted content. Tokens adapt
                 automatically via <code>data-theme=&quot;brand&quot;</code>.
               </p>
-            </div>
+            </Card>
 
             {/* Accent card */}
-            <div data-theme="accent" className="rounded-2xl bg-bg p-6">
+            <Card theme="accent">
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-card">
                 <LuStar className="h-5 w-5 text-accent-700" strokeWidth={1.75} />
               </div>
@@ -721,10 +612,10 @@ export default function DesignSystemPage() {
               <p className="mt-1.5 text-sm text-fg-muted">
                 Amber-yellow surface for high-visibility callouts or promotional content.
               </p>
-            </div>
+            </Card>
 
             {/* Interactive card */}
-            <DemoCard className="cursor-pointer transition-all hover:-translate-y-1 hover:shadow-md">
+            <Card variant="interactive">
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent-100">
                 <LuUsers className="h-5 w-5 text-accent-700" strokeWidth={1.75} />
               </div>
@@ -732,7 +623,7 @@ export default function DesignSystemPage() {
               <p className="mt-1.5 text-sm text-fg-muted">
                 Hover to see the lift effect. Use for clickable card-based navigation.
               </p>
-            </DemoCard>
+            </Card>
 
             {/* Stat card */}
             <div className="rounded-2xl bg-brand-50 p-6 text-center">
@@ -789,16 +680,7 @@ export default function DesignSystemPage() {
               <TextField label="Text field" placeholder="Enter your full name" />
               <TextField label="Email" type="email" placeholder="you@example.com" />
               <TextField label="Error state" defaultValue="invalid-email" className="[&_input]:border-red-400 [&_input]:ring-red-400" />
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-fg">
-                  Textarea
-                </label>
-                <textarea
-                  rows={3}
-                  placeholder="Describe the issue…"
-                  className="block w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-fg-muted placeholder:text-fg-subtle focus:border-brand-500 focus:outline-none focus:ring-1 focus:ring-brand-500"
-                />
-              </div>
+              <Textarea label="Textarea" placeholder="Describe the issue…" />
               <SelectField label="Property type">
                 <option>Select an option</option>
                 <option>Flat</option>
@@ -810,7 +692,7 @@ export default function DesignSystemPage() {
             {/* Example form */}
             <div>
               <SubHeading>Contact Form Example</SubHeading>
-              <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <Card>
                 <h3 className="mb-5 text-lg font-bold text-fg">Get in touch</h3>
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-3">
@@ -823,16 +705,7 @@ export default function DesignSystemPage() {
                     <option>Technical support</option>
                     <option>Partnership</option>
                   </SelectField>
-                  <div>
-                    <label className="mb-2 block text-sm font-semibold text-fg">
-                      Message
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="How can we help?"
-                      className="block w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm text-fg-muted placeholder:text-fg-subtle focus:border-brand-700 focus:outline-none focus:ring-1 focus:ring-brand-700"
-                    />
-                  </div>
+                  <Textarea label="Message" placeholder="How can we help?" />
                   <Callout variant="success" title="Form submitted!">
                     Thank you — we&apos;ll get back to you within one business day.
                   </Callout>
@@ -840,7 +713,7 @@ export default function DesignSystemPage() {
                     Send message
                   </Button>
                 </div>
-              </div>
+              </Card>
             </div>
           </div>
 
@@ -922,7 +795,7 @@ export default function DesignSystemPage() {
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
             {/* Stock photography */}
-            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <Card>
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-50">
                   <LuLayoutDashboard className="h-5 w-5 text-brand-700" strokeWidth={1.75} />
@@ -963,10 +836,10 @@ export default function DesignSystemPage() {
                   </li>
                 </ul>
               </div>
-            </div>
+            </Card>
 
             {/* Illustration style */}
-            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <Card>
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent-100">
                   <LuStar className="h-5 w-5 text-accent-700" strokeWidth={1.75} />
@@ -1068,7 +941,7 @@ export default function DesignSystemPage() {
                   </li>
                 </ul>
               </div>
-            </div>
+            </Card>
           </div>
 
           {/* Blob shape guide */}
@@ -1087,14 +960,7 @@ export default function DesignSystemPage() {
               { color: 'oklch(0.970 0.025 240)', label: 'sky-100' },
             ].map(({ color, label }) => (
               <div key={label} className="flex flex-col items-center gap-2">
-                <div className="relative h-20 w-20">
-                  <svg viewBox="0 0 80 80" className="h-full w-full" aria-hidden>
-                    <path
-                      d="M60 10 C80 10, 80 30, 70 50 C60 70, 40 80, 20 70 C0 60, 0 40, 10 20 C20 0, 40 10, 60 10Z"
-                      fill={color}
-                    />
-                  </svg>
-                </div>
+                <Blob fill={color} className="h-20 w-20" />
                 <span className="font-mono text-[10px] text-fg-subtle">{label}</span>
               </div>
             ))}

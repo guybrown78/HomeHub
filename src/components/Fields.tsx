@@ -45,3 +45,19 @@ export function SelectField({
     </div>
   )
 }
+
+export function Textarea({
+  label,
+  className,
+  rows = 3,
+  ...props
+}: Omit<React.ComponentPropsWithoutRef<'textarea'>, 'id'> & { label?: string }) {
+  let id = useId()
+
+  return (
+    <div className={className}>
+      {label && <Label id={id}>{label}</Label>}
+      <textarea id={id} rows={rows} {...props} className={formClasses} />
+    </div>
+  )
+}
