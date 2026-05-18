@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { FadeInStagger, FadeInItem } from '@/components/FadeIn'
 import { Section } from '@/components/Section'
 import { AppStoreLink } from '@/components/AppStoreLink'
 import { GooglePlayLink } from '@/components/GooglePlayLink'
@@ -9,9 +10,9 @@ export function FinalCTA() {
   return (
     <Section className="bg-bg-muted py-20 sm:py-32">
       <Container>
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+        <FadeInStagger className="grid grid-cols-1 gap-6 lg:grid-cols-2" stagger={0.12}>
           {/* For Housing Providers */}
-          <div
+          <FadeInItem><div
             data-theme="brand"
             className="relative flex flex-col overflow-hidden rounded-4xl bg-bg p-10"
           >
@@ -42,10 +43,10 @@ export function FinalCTA() {
                 </Button>
               </div>
             </div>
-          </div>
+          </div></FadeInItem>
 
           {/* For Residents */}
-          <div
+          <FadeInItem><div
             data-theme="accent"
             className="relative flex flex-col overflow-hidden rounded-4xl bg-bg p-10"
           >
@@ -74,8 +75,8 @@ export function FinalCTA() {
                 <GooglePlayLink color="black" />
               </div>
             </div>
-          </div>
-        </div>
+          </div></FadeInItem>
+        </FadeInStagger>
       </Container>
     </Section>
   )

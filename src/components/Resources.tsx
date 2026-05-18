@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { FadeIn, FadeInStagger, FadeInItem } from '@/components/FadeIn'
 import { Section } from '@/components/Section'
 import { Button } from '@/components/Button'
 import Link from 'next/link'
@@ -44,7 +45,7 @@ export function Resources() {
   return (
     <Section className="bg-bg py-20 sm:py-32">
       <Container>
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <FadeIn className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-fg-subtle">
               Resources
@@ -62,12 +63,13 @@ export function Resources() {
               <LuArrowRight className="ml-1 h-4 w-4" />
             </Button>
           </div>
-        </div>
+        </FadeIn>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <FadeInStagger className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
           {resources.map((resource) => (
+            <FadeInItem key={resource.title}>
             <Link
-              key={resource.title}
+              href={resource.href}
               href={resource.href}
               className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
@@ -102,8 +104,9 @@ export function Resources() {
                 </span>
               </div>
             </Link>
+            </FadeInItem>
           ))}
-        </div>
+        </FadeInStagger>
       </Container>
     </Section>
   )

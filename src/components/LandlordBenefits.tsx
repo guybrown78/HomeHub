@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { FadeIn, FadeInStagger, FadeInItem } from '@/components/FadeIn'
 import { Section } from '@/components/Section'
 import { Button } from '@/components/Button'
 import {
@@ -116,20 +117,22 @@ export function LandlordBenefits() {
       <Container>
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-brand-600">
-              For housing providers
-            </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg sm:text-4xl">
-              The operational platform your team needs
-            </h2>
-            <p className="mt-4 text-lg text-fg-muted">
-              Built to help housing providers deliver better service, meet
-              compliance requirements, and keep residents informed and engaged.
-            </p>
+            <FadeIn>
+              <p className="text-sm font-semibold uppercase tracking-widest text-brand-600">
+                For housing providers
+              </p>
+              <h2 className="mt-2 text-3xl font-bold tracking-tight text-fg sm:text-4xl">
+                The operational platform your team needs
+              </h2>
+              <p className="mt-4 text-lg text-fg-muted">
+                Built to help housing providers deliver better service, meet
+                compliance requirements, and keep residents informed and engaged.
+              </p>
+            </FadeIn>
 
-            <ul className="mt-8 space-y-5">
+            <FadeInStagger className="mt-8 space-y-5" stagger={0.1}>
               {benefits.map(({ Icon, title, description }) => (
-                <li key={title} className="flex gap-4">
+                <FadeInItem key={title} className="flex gap-4">
                   <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-brand-50">
                     <Icon
                       className="h-5 w-5 text-brand-700"
@@ -142,19 +145,19 @@ export function LandlordBenefits() {
                       {description}
                     </p>
                   </div>
-                </li>
+                </FadeInItem>
               ))}
-            </ul>
+            </FadeInStagger>
 
-            <div className="mt-10">
+            <FadeIn delay={0.2} className="mt-10">
               <Button href="/book-demo">
                 Book a Demo
                 <LuChevronRight className="ml-0.5 h-4 w-4" />
               </Button>
-            </div>
+            </FadeIn>
           </div>
 
-          <div className="relative">
+          <FadeIn delay={0.15} className="relative">
             <div
               className="absolute -inset-6 rounded-3xl bg-brand-50"
               aria-hidden="true"
@@ -162,7 +165,7 @@ export function LandlordBenefits() {
             <div className="relative">
               <DashboardPreview />
             </div>
-          </div>
+          </FadeIn>
         </div>
       </Container>
     </Section>

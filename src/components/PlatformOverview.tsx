@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { FadeIn, FadeInStagger, FadeInItem } from '@/components/FadeIn'
 import { Section } from '@/components/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import Link from 'next/link'
@@ -65,18 +66,20 @@ export function PlatformOverview() {
   return (
     <Section className="bg-bg py-20 sm:py-32">
       <Container>
-        <SectionHeader
-          eyebrow="The Platform"
-          heading="One platform, four powerful modules"
-          description="Everything you need to manage homes, engage residents, and stay compliant — all working together."
-          align="center"
-        />
+        <FadeIn>
+          <SectionHeader
+            eyebrow="The Platform"
+            heading="One platform, four powerful modules"
+            description="Everything you need to manage homes, engage residents, and stay compliant — all working together."
+            align="center"
+          />
+        </FadeIn>
 
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <FadeInStagger className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {modules.map((mod) => (
+            <FadeInItem key={mod.name}>
             <div
-              key={mod.name}
-              className={`group flex flex-col rounded-2xl border ${mod.border} bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
+              className={`group flex h-full flex-col rounded-2xl border ${mod.border} bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
             >
               <div
                 className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${mod.iconBg}`}
@@ -105,8 +108,9 @@ export function PlatformOverview() {
                 <LuChevronRight className="h-3.5 w-3.5" />
               </Link>
             </div>
+            </FadeInItem>
           ))}
-        </div>
+        </FadeInStagger>
       </Container>
     </Section>
   )

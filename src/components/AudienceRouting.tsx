@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { FadeIn, FadeInStagger, FadeInItem } from '@/components/FadeIn'
 import { Section } from '@/components/Section'
 import Link from 'next/link'
 import { LuBuilding2, LuSmartphone, LuHouse, LuChevronRight } from 'react-icons/lu'
@@ -49,7 +50,7 @@ export function AudienceRouting() {
   return (
     <Section className="bg-bg-muted py-20 sm:py-24">
       <Container>
-        <div className="mx-auto mb-12 max-w-2xl text-center">
+        <FadeIn className="mx-auto mb-12 max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-fg sm:text-4xl">
             Built for everyone involved in housing
           </h2>
@@ -57,14 +58,14 @@ export function AudienceRouting() {
             Whether you manage properties, rent your home, or own it — HomeHub
             is designed for you.
           </p>
-        </div>
+        </FadeIn>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <FadeInStagger className="grid grid-cols-1 gap-5 sm:grid-cols-3">
           {audiences.map((audience) => (
+            <FadeInItem key={audience.id}>
             <div
-              key={audience.id}
               data-theme={audience.theme ?? undefined}
-              className="group flex flex-col overflow-hidden rounded-3xl bg-bg p-8 transition-transform duration-300 hover:-translate-y-1"
+              className="group flex h-full flex-col overflow-hidden rounded-3xl bg-bg p-8 transition-transform duration-300 hover:-translate-y-1"
             >
               <div
                 className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl ${audience.iconBg}`}
@@ -95,8 +96,9 @@ export function AudienceRouting() {
                 <LuChevronRight className="h-4 w-4" />
               </Link>
             </div>
+            </FadeInItem>
           ))}
-        </div>
+        </FadeInStagger>
       </Container>
     </Section>
   )

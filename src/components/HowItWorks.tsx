@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { FadeIn, FadeInStagger, FadeInItem } from '@/components/FadeIn'
 import { Section } from '@/components/Section'
 import { LuSettings, LuUsers, LuLayoutDashboard } from 'react-icons/lu'
 
@@ -30,7 +31,7 @@ export function HowItWorks() {
   return (
     <Section data-theme="brand-light" className="bg-bg py-20 sm:py-32">
       <Container>
-        <div className="mx-auto max-w-2xl text-center">
+        <FadeIn className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-fg-muted">
             Getting started
           </p>
@@ -41,7 +42,7 @@ export function HowItWorks() {
             HomeHub is designed to be up and running quickly — no technical
             knowledge required.
           </p>
-        </div>
+        </FadeIn>
 
         <div className="relative mt-16">
           {/* Horizontal connector line (desktop only) */}
@@ -50,9 +51,10 @@ export function HowItWorks() {
             aria-hidden="true"
           />
 
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
+          <FadeInStagger className="grid grid-cols-1 gap-10 lg:grid-cols-3" stagger={0.12}>
             {steps.map((step, index) => (
-              <div key={step.number} className="flex flex-col items-center text-center">
+              <FadeInItem key={step.number}>
+              <div className="flex flex-col items-center text-center">
                 {/* Step icon circle */}
                 <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary shadow-md ring-4 ring-bg">
                   <step.Icon
@@ -69,8 +71,9 @@ export function HowItWorks() {
                   {step.description}
                 </p>
               </div>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInStagger>
         </div>
       </Container>
     </Section>
