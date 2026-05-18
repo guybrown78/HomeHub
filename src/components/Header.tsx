@@ -115,7 +115,7 @@ export function Header() {
 
           <div className="flex items-center gap-4">
             <div className="hidden lg:block">
-              <Button href="/demo">Book a Demo</Button>
+              <Button href="/book-demo">Book a Demo</Button>
             </div>
             <button
               className="flex h-10 w-10 items-center justify-center rounded-lg stroke-gray-700 hover:bg-gray-100 lg:hidden"
@@ -162,7 +162,7 @@ export function Header() {
                 </div>
               ))}
               <div className="border-t border-gray-100 pt-4">
-                <Button href="/demo" className="w-full justify-center">
+                <Button href="/book-demo" className="w-full justify-center">
                   Book a Demo
                 </Button>
               </div>

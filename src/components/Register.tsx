@@ -219,11 +219,11 @@ const Register = () => {
                 <p className="text-fg mt-2 text-sm font-light">
                   In the meantime, please email us at{' '}
                   <a
-                    href="mailto:hello@homehub.co.uk"
+                    href="mailto:hello@homehubinfo.co.uk"
                     target="_blank"
                     className="cursor-pointer font-medium underline"
                   >
-                    hello@homehub.co.uk
+                    hello@homehubinfo.co.uk
                   </a>
                 </p>
               </div>

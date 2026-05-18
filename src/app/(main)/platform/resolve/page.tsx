@@ -48,7 +48,7 @@ export default function ResolvePage() {
               A smarter way to report, track, and resolve housing repairs. Give residents the transparency they deserve and give your team the tools to work efficiently.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/demo">Book a Demo</Button>
+              <Button href="/book-demo">Book a Demo</Button>
               <Button href="/landlords/repairs-resolution" variant="outline" color="violet" className="border-white/30 text-white hover:border-white/60">
                 Learn More
               </Button>

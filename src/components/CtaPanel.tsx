@@ -26,7 +26,10 @@ function GooglePlayButton() {
 
 export function CtaPanel() {
   return (
-    <section className="relative z-10 -mt-10 rounded-t-5xl bg-amber-300 pt-12 pb-24 sm:pt-16 sm:pb-28">
+    <section 
+			// className="relative z-10 -mt-10 rounded-t-5xl bg-amber-300 pt-12 pb-24 sm:pt-16 sm:pb-28"
+			className="overflow-hidden py-6 lg:py-12 bg-gradient-to-tr from-accent-400 to-ink via-100% to-50%"
+		>
       <Container>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           <div className="rounded-2xl bg-white/40 p-8 sm:p-10">
@@ -37,7 +40,7 @@ export function CtaPanel() {
               See how HomeHub can transform your property management and resident engagement.
             </p>
             <div className="mt-8">
-              <Button href="/demo" variant="outline" color="violet" className="px-6 py-3 text-base">
+              <Button href="/book-demo" variant="outline" color="violet" className="px-6 py-3 text-base">
                 Book a Demo
               </Button>
             </div>

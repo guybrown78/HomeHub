@@ -48,7 +48,7 @@ export default function RetrofitFundingPage() {
               Unlock funding, plan improvements, and hit your net zero targets. HomeHub makes retrofit manageable for housing providers of every size.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/demo">Book a Demo</Button>
+              <Button href="/book-demo">Book a Demo</Button>
               <Button href="/platform/energy" variant="outline" color="violet" className="border-white/30 text-white hover:border-white/60">
                 Energy Platform
               </Button>

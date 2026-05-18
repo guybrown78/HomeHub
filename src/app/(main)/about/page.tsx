@@ -67,7 +67,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="mt-8">
-                <Button href="/demo">See HomeHub in Action</Button>
+                <Button href="/book-demo">See HomeHub in Action</Button>
               </div>
             </div>
 

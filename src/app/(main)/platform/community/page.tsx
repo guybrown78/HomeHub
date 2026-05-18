@@ -48,7 +48,7 @@ export default function CommunityPage() {
               Build stronger, more connected communities. HomeHub gives housing providers the tools to communicate meaningfully with residents and foster genuine neighbourhood belonging.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/demo">Book a Demo</Button>
+              <Button href="/book-demo">Book a Demo</Button>
               <Button href="/landlords/resident-engagement" variant="outline" color="violet" className="border-white/30 text-white hover:border-white/60">
                 Resident Engagement
               </Button>

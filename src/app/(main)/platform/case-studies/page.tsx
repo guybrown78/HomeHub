@@ -48,7 +48,7 @@ export default function CaseStudiesPage() {
               Real outcomes from real housing providers. See how HomeHub is transforming resident engagement, compliance, and operational efficiency across the UK.
             </p>
             <div className="mt-10">
-              <Button href="/demo">Talk to Our Team</Button>
+              <Button href="/book-demo">Talk to Our Team</Button>
             </div>
           </div>
         </Container>
@@ -79,7 +79,7 @@ export default function CaseStudiesPage() {
               Book a demo to see how HomeHub can work for your organisation.
             </p>
             <div className="mt-6">
-              <Button href="/demo">Book a Demo</Button>
+              <Button href="/book-demo">Book a Demo</Button>
             </div>
           </div>
         </Container>

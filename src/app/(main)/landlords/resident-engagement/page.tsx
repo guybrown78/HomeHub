@@ -48,7 +48,7 @@ export default function ResidentEngagementPage() {
               Engaged residents are satisfied residents. HomeHub makes it easy to communicate, listen, and respond at scale — building the trust that drives long-term tenancy success.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/demo">Book a Demo</Button>
+              <Button href="/book-demo">Book a Demo</Button>
               <Button href="/platform/community" variant="outline" color="violet" className="border-white/30 text-white hover:border-white/60">
                 Community Platform
               </Button>

@@ -48,7 +48,7 @@ export default function EnergyPage() {
               Empowering residents to understand, manage, and reduce their energy use — while helping housing providers meet retrofit and net zero targets.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/demo">Book a Demo</Button>
+              <Button href="/book-demo">Book a Demo</Button>
               <Button href="/landlords/retrofit-funding" variant="outline" color="violet" className="border-white/30 text-white hover:border-white/60">
                 Retrofit & Funding
               </Button>

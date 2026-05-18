@@ -498,11 +498,7 @@ export default function DesignSystemPage() {
           <SubHeading>Solid Variants</SubHeading>
           <div className="flex flex-wrap items-center gap-4">
             <Button variant="solid" color="violet">Brand (Primary)</Button>
-            <button
-              className="inline-flex justify-center rounded-full bg-secondary px-4 py-2 text-sm font-semibold text-secondary-fg transition-colors hover:opacity-90 active:opacity-80"
-            >
-              Accent (Secondary)
-            </button>
+            <Button variant="solid" color="accent">Accent (Secondary)</Button>
             <Button variant="solid" color="white">
               White
             </Button>

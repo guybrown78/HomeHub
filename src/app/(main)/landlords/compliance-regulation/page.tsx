@@ -48,7 +48,7 @@ export default function ComplianceRegulationPage() {
               Housing compliance is more complex than ever. HomeHub gives landlords and housing providers the visibility and control to stay ahead — not just keep up.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/demo">Book a Demo</Button>
+              <Button href="/book-demo">Book a Demo</Button>
               <Button href="/resources/guides" variant="outline" color="violet" className="border-white/30 text-white hover:border-white/60">
                 Compliance Guides
               </Button>

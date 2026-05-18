@@ -115,7 +115,7 @@ export default function FaqsPage() {
             </p>
             <div className="mt-4 flex gap-4">
               <Button href="/contact">Contact Us</Button>
-              <Button href="/demo" variant="outline" color="violet">Book a Demo</Button>
+              <Button href="/book-demo" variant="outline" color="violet">Book a Demo</Button>
             </div>
           </div>
         </Container>

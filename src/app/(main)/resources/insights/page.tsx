@@ -82,7 +82,7 @@ export default function InsightsPage() {
           </div>
 
           <div className="mt-16 text-center">
-            <Button href="/demo">Talk to Our Team</Button>
+            <Button href="/book-demo">Talk to Our Team</Button>
           </div>
         </Container>
       </Section>

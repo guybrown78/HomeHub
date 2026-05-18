@@ -3,7 +3,7 @@ import clsx from 'clsx'
 
 const baseStyles = {
   solid:
-    'inline-flex items-center justify-center gap-2 rounded-full py-2 px-3 text-sm font-semibold transition-colors cursor-pointer',
+    'inline-flex items-center justify-center gap-2 rounded-full py-2 px-4 text-sm font-semibold transition-colors cursor-pointer',
   outline:
     'inline-flex items-center justify-center gap-2 rounded-full border py-[calc(--spacing(2)-1px)] px-[calc(--spacing(3)-1px)] text-sm transition-colors cursor-pointer',
 }
@@ -14,6 +14,7 @@ const variantStyles = {
     white:
       'bg-white text-cyan-900 hover:bg-white/90 active:bg-white/90 active:text-cyan-900/70',
     violet: 'bg-brand-950 text-white hover:bg-brand-900 active:bg-brand-800 active:text-white/80',
+    accent: 'bg-secondary text-secondary-fg hover:opacity-90 active:opacity-80',
   },
   outline: {
     violet: 'border-brand-950 text-brand-950 hover:border-brand-900 active:bg-brand-800 active:text-white/80',

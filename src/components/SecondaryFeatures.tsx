@@ -132,7 +132,7 @@ export function SecondaryFeatures() {
               </ul>
 
               <div className="mt-10">
-                <Button href="/demo" variant="solid" color="white">
+                <Button href="/book-demo" variant="solid" color="white">
                   Book a demo
                   <LuChevronRight className="-mr-0.5 h-4 w-4" />
                 </Button>

@@ -39,6 +39,8 @@
   --animate-spin-reverse: spin-reverse 1s linear infinite;
   --animate-spin-reverse-slow: spin-reverse 4s linear infinite;
   --animate-spin-reverse-slower: spin-reverse 6s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 8s ease-in-out 2s infinite;
 
   --radius-4xl: 2rem;
   --radius-5xl: 2.5rem;
@@ -125,6 +127,10 @@
     to {
       transform: rotate(-360deg);
     }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
   }
 }
 
