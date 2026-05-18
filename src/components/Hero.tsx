@@ -1,3 +1,17 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import {
+  LuCircleCheck,
+  LuZap,
+  LuMessageCircle,
+  LuFileText,
+  LuCalendar,
+  LuWrench,
+  LuLeaf,
+} from 'react-icons/lu'
+
 import { AppDemo } from '@/components/AppDemo'
 import { AppStoreLink } from '@/components/AppStoreLink'
 import { GooglePlayLink } from '@/components/GooglePlayLink'
@@ -6,6 +20,154 @@ import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
 import { Section } from '@/components/Section'
 import { LuChevronRight } from 'react-icons/lu'
+
+type Notification = {
+  icon: React.ComponentType<React.SVGAttributes<SVGElement> & { strokeWidth?: number | string }>
+  iconBg: string
+  iconColor: string
+  title: string
+  subtitle: string
+}
+
+const notifications: Notification[] = [
+  {
+    icon: LuCircleCheck,
+    iconBg: 'bg-emerald-100',
+    iconColor: 'text-emerald-600',
+    title: 'Repair Resolved',
+    subtitle: 'Damp issue — 24 Maple St',
+  },
+  {
+    icon: LuZap,
+    iconBg: 'bg-accent-100',
+    iconColor: 'text-accent-700',
+    title: 'EPC Rating: C',
+    subtitle: 'Improved from D',
+  },
+  {
+    icon: LuMessageCircle,
+    iconBg: 'bg-blue-100',
+    iconColor: 'text-blue-600',
+    title: 'New Message',
+    subtitle: 'From your housing officer',
+  },
+  {
+    icon: LuFileText,
+    iconBg: 'bg-brand-50',
+    iconColor: 'text-brand-700',
+    title: 'Document Ready',
+    subtitle: 'Gas Safety Certificate',
+  },
+  {
+    icon: LuCalendar,
+    iconBg: 'bg-orange-100',
+    iconColor: 'text-orange-600',
+    title: 'Inspection Booked',
+    subtitle: 'Mon 12 Jun, 10:00am',
+  },
+  {
+    icon: LuWrench,
+    iconBg: 'bg-rose-100',
+    iconColor: 'text-rose-600',
+    title: 'Issue Logged',
+    subtitle: 'Boiler fault — 8 Oak Ave',
+  },
+  {
+    icon: LuLeaf,
+    iconBg: 'bg-emerald-100',
+    iconColor: 'text-emerald-600',
+    title: 'Retrofit Complete',
+    subtitle: 'Solar panels installed',
+  },
+]
+
+function FloatingAlert({
+  pool,
+  startIndex,
+  className,
+  initialDelay,
+  floatDuration = 5,
+}: {
+  pool: Notification[]
+  startIndex: number
+  className: string
+  initialDelay: number
+  floatDuration?: number
+}) {
+  const [index, setIndex] = useState(startIndex % pool.length)
+  const [visible, setVisible] = useState(false)
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([])
+
+  useEffect(() => {
+    const add = (ms: number, fn: () => void) => {
+      const t = setTimeout(fn, ms)
+      timers.current.push(t)
+    }
+
+    function cycle(delay: number) {
+      add(delay, () => {
+        setVisible(true)
+        // Show for 7–11 seconds
+        add(7000 + Math.random() * 4000, () => {
+          setVisible(false)
+          // Wait for fade-out, then advance and schedule next appearance
+          add(1800, () => {
+            setIndex((i) => (i + 1) % pool.length)
+            // Gap before next appearance: 2–4 seconds
+            cycle(2000 + Math.random() * 2000)
+          })
+        })
+      })
+    }
+
+    cycle(initialDelay)
+
+    return () => {
+      timers.current.forEach(clearTimeout)
+      timers.current = []
+    }
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const n = pool[index]
+
+  return (
+    <div className={`absolute z-20 ${className}`}>
+      <AnimatePresence mode="wait">
+        {visible && (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 1.4, ease: 'easeInOut' }}
+          >
+            <motion.div
+              animate={{ y: [0, -9, 0] }}
+              transition={{
+                duration: floatDuration,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+              className="w-max rounded-xl bg-white p-3 shadow-xl ring-1 ring-black/5"
+            >
+              <div className="flex items-center gap-2.5">
+                <div
+                  className={`flex h-8 w-8 flex-none items-center justify-center rounded-full ${n.iconBg}`}
+                >
+                  <n.icon className={`h-4 w-4 ${n.iconColor}`} strokeWidth={2} />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold text-gray-900">{n.title}</p>
+                  <p className="text-xs text-gray-500">{n.subtitle}</p>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
 
 export function Hero() {
   return (
@@ -59,33 +221,32 @@ export function Hero() {
                 <AppDemo />
               </PhoneFrame>
 
-              <div className="absolute left-0 top-12 z-20 hidden rounded-xl bg-white p-3 shadow-xl ring-1 ring-black/5 animate-float lg:block">
-                <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-emerald-100">
-                    <svg className="h-4 w-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-gray-900">Repair Resolved</p>
-                    <p className="text-xs text-gray-500">Damp issue — 24 Maple St</p>
-                  </div>
-                </div>
-              </div>
+              {/* Slot 1 — top left, starts immediately */}
+              <FloatingAlert
+                pool={notifications}
+                startIndex={0}
+                initialDelay={500}
+                className="left-0 top-16"
+                floatDuration={5}
+              />
 
-              <div className="absolute right-0 bottom-36 z-20 hidden rounded-xl bg-white p-3 shadow-xl ring-1 ring-black/5 animate-float-delayed lg:block">
-                <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-accent-100">
-                    <svg className="h-4 w-4 text-accent-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold text-gray-900">EPC Rating: C</p>
-                    <p className="text-xs text-gray-500">Improved from D</p>
-                  </div>
-                </div>
-              </div>
+              {/* Slot 2 — upper right, starts after ~3.5s */}
+              <FloatingAlert
+                pool={notifications}
+                startIndex={3}
+                initialDelay={3500}
+                className="right-0 top-32"
+                floatDuration={6.5}
+              />
+
+              {/* Slot 3 — lower right, starts after ~7s */}
+              <FloatingAlert
+                pool={notifications}
+                startIndex={5}
+                initialDelay={7000}
+                className="right-0 bottom-44"
+                floatDuration={5.8}
+              />
             </div>
           </div>
 
