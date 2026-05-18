@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Container } from '@/components/Container'
 import { Logomark } from '@/components/Logo'
-import { navSections } from '@/libs/navigation'
+import { navSections, footerPolicyLinks } from '@/libs/navigation'
 import { FooterNavAccordion } from '@/components/FooterNavAccordion'
 
 function LinkedInIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -86,15 +86,15 @@ export function Footer() {
 
         <div className="flex flex-col gap-4 py-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link href="/policies/privacy" className="text-xs text-white/50 transition-colors hover:text-white">
-              Privacy Policy
-            </Link>
-            <Link href="/policies/terms" className="text-xs text-white/50 transition-colors hover:text-white">
-              Terms of Service
-            </Link>
-            <Link href="/policies/cookies" className="text-xs text-white/50 transition-colors hover:text-white">
-              Cookie Policy
-            </Link>
+            {footerPolicyLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-xs text-white/50 transition-colors hover:text-white"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
           <p className="text-xs text-white/50">
             &copy; Copyright {new Date().getFullYear()} HomeHub. All rights reserved.

@@ -8,7 +8,7 @@ import { LuChevronDown, LuX, LuMenu } from 'react-icons/lu'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
-import { navSections } from '@/libs/navigation'
+import { navSections, headerCtas } from '@/libs/navigation'
 
 function ChevronDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -27,9 +27,15 @@ function ChevronDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 function NavDropdown({
   title,
   links,
+  iconBg,
+  iconColor,
+  align = 'left',
 }: {
   title: string
-  links: { label: string; href: string }[]
+  links: { label: string; href: string; icon?: React.ComponentType<React.SVGAttributes<SVGElement> & { strokeWidth?: number | string }>; description?: string }[]
+  iconBg: string
+  iconColor: string
+  align?: 'left' | 'right'
 }) {
   const [isOpen, setIsOpen] = useState(false)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
@@ -46,7 +52,7 @@ function NavDropdown({
   return (
     <div onMouseEnter={open} onMouseLeave={close} className="relative">
       <button
-        className="flex items-center gap-1 text-sm font-medium text-gray-700 transition-colors hover:text-brand-950"
+        className={`flex items-center gap-1 text-sm font-medium transition-colors ${isOpen ? 'text-brand-950' : 'text-gray-600 hover:text-brand-950'}`}
         aria-expanded={isOpen}
       >
         {title}
@@ -58,24 +64,40 @@ function NavDropdown({
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.15 }}
+            initial={{ opacity: 0, y: -4, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -4, scale: 0.98 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
             onMouseEnter={open}
             onMouseLeave={close}
-            className="absolute left-0 top-full z-50 mt-2 w-56"
+            className={`absolute top-full z-50 mt-3 w-72 ${align === 'right' ? 'right-0' : 'left-0'}`}
           >
-            <div className="overflow-hidden rounded-xl bg-white shadow-xl ring-1 ring-black/5">
+            <div className="overflow-hidden rounded-2xl bg-white shadow-2xl ring-1 ring-black/5">
               <div className="p-2">
                 {links.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block rounded-lg px-3 py-2 text-sm text-gray-600 transition-colors hover:bg-brand-50 hover:text-brand-950"
+                    className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-gray-50"
                   >
-                    {link.label}
+                    {link.icon && (
+                      <div
+                        className={`mt-0.5 flex h-8 w-8 flex-none items-center justify-center rounded-lg ${iconBg} transition-colors group-hover:brightness-95`}
+                      >
+                        <link.icon className={`h-4 w-4 ${iconColor}`} strokeWidth={1.75} />
+                      </div>
+                    )}
+                    <div className="min-w-0">
+                      <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-950">
+                        {link.label}
+                      </p>
+                      {link.description && (
+                        <p className="mt-0.5 text-xs leading-relaxed text-gray-500">
+                          {link.description}
+                        </p>
+                      )}
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -195,9 +217,28 @@ function MobileNavPanel({
                                 key={link.href}
                                 href={link.href}
                                 onClick={onClose}
-                                className="block rounded-xl px-4 py-2.5 text-sm text-gray-600 transition-colors hover:bg-brand-50 hover:text-brand-950"
+                                className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-gray-50"
                               >
-                                {link.label}
+                                {link.icon && (
+                                  <div
+                                    className={`mt-0.5 flex h-8 w-8 flex-none items-center justify-center rounded-lg ${section.iconBg}`}
+                                  >
+                                    <link.icon
+                                      className={`h-4 w-4 ${section.iconColor}`}
+                                      strokeWidth={1.75}
+                                    />
+                                  </div>
+                                )}
+                                <div className="min-w-0">
+                                  <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-950">
+                                    {link.label}
+                                  </p>
+                                  {link.description && (
+                                    <p className="mt-0.5 text-xs leading-relaxed text-gray-500">
+                                      {link.description}
+                                    </p>
+                                  )}
+                                </div>
                               </Link>
                             ))}
                           </div>
@@ -211,17 +252,17 @@ function MobileNavPanel({
 
             {/* Bottom CTAs */}
             <div className="flex-none space-y-2 border-t border-gray-100 p-5">
-              <Button href="/book-demo" onClick={onClose} className="w-full justify-center">
-                Book a Demo
-              </Button>
-              <Button
-                href="/residents/download-app"
-                variant="outline"
-                onClick={onClose}
-                className="w-full justify-center"
-              >
-                Download App
-              </Button>
+              {headerCtas.map((cta) => (
+                <Button
+                  key={cta.href}
+                  href={cta.href}
+                  variant={cta.variant}
+                  onClick={onClose}
+                  className="w-full justify-center"
+                >
+                  {cta.label}
+                </Button>
+              ))}
             </div>
           </motion.div>
         )}
@@ -244,18 +285,26 @@ export function Header() {
 
             <div className="hidden items-center gap-8 lg:flex">
               {navSections.map((section) => (
-                <NavDropdown key={section.title} title={section.title} links={section.links} />
+                <NavDropdown
+                  key={section.title}
+                  title={section.title}
+                  links={section.links}
+                  iconBg={section.iconBg}
+                  iconColor={section.iconColor}
+                  align={section.align}
+                />
               ))}
             </div>
 
             <div className="flex items-center gap-4">
               <div className="hidden items-center gap-3 lg:flex">
-                <div className="hidden xl:block">
-                  <Button href="/residents/download-app" variant="outline">
-                    Download App
-                  </Button>
-                </div>
-                <Button href="/book-demo">Book a Demo</Button>
+                {headerCtas.map((cta, i) => (
+                  <div key={cta.href} className={i === 0 ? 'hidden xl:block' : undefined}>
+                    <Button href={cta.href} variant={cta.variant}>
+                      {cta.label}
+                    </Button>
+                  </div>
+                ))}
               </div>
               <button
                 className="flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 lg:hidden"
