@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { Section } from '@/components/Section'
 import { LuShieldCheck, LuGlobe, LuLock } from 'react-icons/lu'
 
 const organisations = [
@@ -18,7 +19,7 @@ const trust = [
 
 export function SocialProof() {
   return (
-    <section className="-mt-10 rounded-t-5xl bg-bg-muted py-16 sm:py-20">
+    <Section className="bg-bg-muted py-16 sm:py-20">
       <Container>
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-fg-subtle">
@@ -49,6 +50,6 @@ export function SocialProof() {
           ))}
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }

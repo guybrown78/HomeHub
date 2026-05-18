@@ -1,5 +1,7 @@
 import { type Metadata } from 'next'
 import { DemoBookingForm } from '@/components/DemoBookingForm'
+import { Section } from '@/components/Section'
+import { Container } from '@/components/Container'
 import {
   LuCalendar,
   LuMonitor,
@@ -47,8 +49,9 @@ const trustSignals = [
 
 export default function BookDemoPage() {
   return (
-    <div className="rounded-t-5xl overflow-hidden bg-bg">
-      <div className="grid min-h-screen grid-cols-1 lg:grid-cols-5">
+    <>
+    <Section first className="overflow-hidden bg-bg">
+      <div className="grid grid-cols-1 lg:grid-cols-5">
 
         {/* ── Left: Form ─────────────────────────────────────── */}
         <div className="flex flex-col justify-center px-6 py-16 sm:px-10 lg:col-span-3 lg:px-16 xl:px-24">
@@ -138,6 +141,45 @@ export default function BookDemoPage() {
         </div>
 
       </div>
-    </div>
+    </Section>
+
+    {/* ── FAQ break before footer ─────────────────────────── */}
+    <Section className="relative z-10 bg-bg-muted">
+        <Container>
+          <div className="mx-auto max-w-3xl py-16 sm:py-20">
+            <h2 className="text-xl font-bold text-fg">Common questions about the demo</h2>
+            <dl className="mt-8 divide-y divide-border">
+              {[
+                {
+                  q: "How long does the demo take?",
+                  a: "Around 30 minutes. We keep it focused and won't waste your time — if it's not a fit we'll say so early.",
+                },
+                {
+                  q: "Who should attend from our side?",
+                  a: "Whoever is involved in the decision — housing managers, IT leads, or directors. The more context we have, the more useful the session.",
+                },
+                {
+                  q: "Do we need to prepare anything?",
+                  a: "Nothing at all. It helps to have a rough sense of your portfolio size and current pain points, but we'll guide the conversation.",
+                },
+                {
+                  q: "What happens after the demo?",
+                  a: "We'll follow up with a summary and any materials relevant to your organisation. There's no pressure and no automatic sales process.",
+                },
+                {
+                  q: "Can we see specific features?",
+                  a: "Yes — let us know in the message field what you'd like to focus on and we'll tailor the walkthrough accordingly.",
+                },
+              ].map(({ q, a }) => (
+                <div key={q} className="py-5">
+                  <dt className="font-semibold text-fg">{q}</dt>
+                  <dd className="mt-2 text-sm leading-relaxed text-fg-muted">{a}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </Container>
+      </Section>
+    </>
   )
 }

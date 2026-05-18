@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { Section } from '@/components/Section'
 import { Button } from '@/components/Button'
 import Link from 'next/link'
 import { LuZap, LuHouse, LuFileText, LuArrowRight } from 'react-icons/lu'
@@ -41,7 +42,7 @@ const resources = [
 
 export function Resources() {
   return (
-    <section className="-mt-10 rounded-t-5xl bg-bg py-20 sm:py-32">
+    <Section className="bg-bg py-20 sm:py-32">
       <Container>
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -71,19 +72,21 @@ export function Resources() {
               className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="p-6">
-                <div
-                  className={`inline-flex h-10 w-10 items-center justify-center rounded-xl ${resource.iconBg}`}
-                >
-                  <resource.Icon
-                    className={`h-5 w-5 ${resource.iconColor}`}
-                    strokeWidth={1.75}
-                  />
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`inline-flex h-10 w-10 flex-none items-center justify-center rounded-xl ${resource.iconBg}`}
+                  >
+                    <resource.Icon
+                      className={`h-5 w-5 ${resource.iconColor}`}
+                      strokeWidth={1.75}
+                    />
+                  </div>
+                  <span
+                    className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold ${resource.categoryColor}`}
+                  >
+                    {resource.category}
+                  </span>
                 </div>
-                <span
-                  className={`mt-4 inline-block rounded-full px-2.5 py-0.5 text-xs font-semibold ${resource.categoryColor}`}
-                >
-                  {resource.category}
-                </span>
                 <h3 className="mt-2 font-bold text-fg transition-colors group-hover:text-brand-800">
                   {resource.title}
                 </h3>
@@ -102,6 +105,6 @@ export function Resources() {
           ))}
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }

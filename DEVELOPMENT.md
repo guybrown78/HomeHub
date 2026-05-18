@@ -136,6 +136,9 @@ Flat-colour cartoon with bold outline strokes, objects placed on soft pastel blo
 
 All shared UI lives in `src/components/`. Primitive layout components (`Container`, `Button`, `Fields`, `PhoneFrame`) are reused across the marketing sections.
 
+> **Always use `<Section>` — never raw `<section>` tags with manual stacking classes.**
+> See the [Stacked card section effect](#stacked-card-section-effect) section below for details.
+
 ### Button
 
 `src/components/Button.tsx` — renders a `<button>` or `<Link>` depending on whether `href` is set.

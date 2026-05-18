@@ -1,11 +1,13 @@
 import { Container } from '@/components/Container'
+import { Section } from '@/components/Section'
 import { AppStoreLink } from '@/components/AppStoreLink'
+import { GooglePlayLink } from '@/components/GooglePlayLink'
 import { Button } from '@/components/Button'
 import { LuChevronRight } from 'react-icons/lu'
 
 export function FinalCTA() {
   return (
-    <section className="-mt-10 rounded-t-5xl bg-bg-muted py-20 sm:py-32">
+    <Section className="bg-bg-muted py-20 sm:py-32">
       <Container>
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           {/* For Housing Providers */}
@@ -67,13 +69,14 @@ export function FinalCTA() {
                 Report issues, track updates, access documents, and get support
                 directly from your landlord.
               </p>
-              <div className="mt-8">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <AppStoreLink color="black" />
+                <GooglePlayLink color="black" />
               </div>
             </div>
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }

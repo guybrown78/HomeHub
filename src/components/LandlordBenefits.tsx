@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { Section } from '@/components/Section'
 import { Button } from '@/components/Button'
 import {
   LuPhoneOff,
@@ -111,7 +112,7 @@ function DashboardPreview() {
 
 export function LandlordBenefits() {
   return (
-    <section className="-mt-10 rounded-t-5xl bg-bg py-20 sm:py-32">
+    <Section className="bg-bg py-20 sm:py-32">
       <Container>
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
           <div>
@@ -164,6 +165,6 @@ export function LandlordBenefits() {
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }

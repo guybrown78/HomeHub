@@ -4,11 +4,12 @@ import { GooglePlayLink } from '@/components/GooglePlayLink'
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { PhoneFrame } from '@/components/PhoneFrame'
+import { Section } from '@/components/Section'
 import { LuChevronRight } from 'react-icons/lu'
 
 export function Hero() {
   return (
-    <div className="overflow-hidden rounded-t-5xl bg-bg py-20 sm:py-32 lg:pb-32 xl:pb-36">
+    <Section first className="overflow-hidden bg-bg py-20 sm:py-32 lg:pb-32 xl:pb-36">
       <Container>
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-6 lg:max-w-none lg:pt-6">
@@ -93,6 +94,6 @@ export function Hero() {
           </div>
         </div>
       </Container>
-    </div>
+    </Section>
   )
 }

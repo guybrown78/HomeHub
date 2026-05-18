@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { Section } from '@/components/Section'
 import Link from 'next/link'
 import { LuBuilding2, LuSmartphone, LuHouse, LuChevronRight } from 'react-icons/lu'
 
@@ -46,7 +47,7 @@ const audiences = [
 
 export function AudienceRouting() {
   return (
-    <section className="-mt-10 rounded-t-5xl bg-bg-muted py-20 sm:py-24">
+    <Section className="bg-bg-muted py-20 sm:py-24">
       <Container>
         <div className="mx-auto mb-12 max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight text-fg sm:text-4xl">
@@ -97,6 +98,6 @@ export function AudienceRouting() {
           ))}
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }

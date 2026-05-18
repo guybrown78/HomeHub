@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { Section } from '@/components/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import Link from 'next/link'
 import {
@@ -62,7 +63,7 @@ const modules = [
 
 export function PlatformOverview() {
   return (
-    <section className="-mt-10 rounded-t-5xl bg-bg py-20 sm:py-32">
+    <Section className="bg-bg py-20 sm:py-32">
       <Container>
         <SectionHeader
           eyebrow="The Platform"
@@ -107,6 +108,6 @@ export function PlatformOverview() {
           ))}
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }

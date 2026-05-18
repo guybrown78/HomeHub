@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { Section } from '@/components/Section'
 import { LuSettings, LuUsers, LuLayoutDashboard } from 'react-icons/lu'
 
 const steps = [
@@ -27,7 +28,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section data-theme="brand-light" className="-mt-10 rounded-t-5xl bg-bg py-20 sm:py-32">
+    <Section data-theme="brand-light" className="bg-bg py-20 sm:py-32">
       <Container>
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-sm font-semibold uppercase tracking-widest text-fg-muted">
@@ -72,6 +73,6 @@ export function HowItWorks() {
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }
