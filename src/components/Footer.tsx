@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Container } from '@/components/Container'
 import { Logomark } from '@/components/Logo'
 import { navSections } from '@/libs/navigation'
+import { FooterNavAccordion } from '@/components/FooterNavAccordion'
 
 function LinkedInIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -23,54 +24,64 @@ export function Footer() {
   return (
     <footer className="rounded-t-5xl bg-brand-950 pt-12 sm:pt-16">
       <Container>
-        <div className="grid grid-cols-2 gap-10 border-b border-white/10 pb-12 sm:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr]">
-          <div className="col-span-2 sm:col-span-3 lg:col-span-1">
-            <div className="flex items-center gap-3 text-white">
-              <Logomark className="h-8 w-8 flex-none fill-[#FFA500]" />
-              <span className="text-lg font-bold">HomeHub</span>
+        <div className="border-b border-white/10 pb-12">
+          {/* Brand + nav grid */}
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr]">
+            {/* Brand column */}
+            <div>
+              <div className="flex items-center gap-3 text-white">
+                <Logomark className="h-8 w-8 flex-none fill-[#FFA500]" />
+                <span className="text-lg font-bold">HomeHub</span>
+              </div>
+              <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
+                Connect communities, streamline issue reporting and ensure compliance with our intuitive platform designed for everyone.
+              </p>
+              <div className="mt-6 flex gap-3">
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
+                >
+                  <LinkedInIcon className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
+                >
+                  <YouTubeIcon className="h-4 w-4" />
+                </a>
+              </div>
             </div>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
-              Connect communities, streamline issue reporting and ensure compliance with our intuitive platform designed for everyone.
-            </p>
-            <div className="mt-6 flex gap-3">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
-              >
-                <LinkedInIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="YouTube"
-                className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 transition-colors hover:bg-white/20 hover:text-white"
-              >
-                <YouTubeIcon className="h-4 w-4" />
-              </a>
-            </div>
+
+            {/* Desktop nav columns */}
+            {navSections.map((section) => (
+              <div key={section.title} className="hidden lg:block">
+                <h3 className="text-sm font-bold text-white">{section.title}</h3>
+                <ul className="mt-4 space-y-3">
+                  {section.links.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-white/60 transition-colors hover:text-white hover:underline"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
-          {navSections.map((section) => (
-            <div key={section.title}>
-              <h3 className="text-sm font-bold text-white">{section.title}</h3>
-              <ul className="mt-4 space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-white/60 transition-colors hover:text-white hover:underline"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Mobile accordion nav */}
+          <div className="mt-8 lg:hidden">
+            <FooterNavAccordion />
+          </div>
         </div>
 
         <div className="flex flex-col gap-4 py-8 sm:flex-row sm:items-center sm:justify-between">
