@@ -70,7 +70,6 @@ export function Resources() {
             <FadeInItem key={resource.title}>
             <Link
               href={resource.href}
-              href={resource.href}
               className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="p-6">
