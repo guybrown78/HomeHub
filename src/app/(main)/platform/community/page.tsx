@@ -1,36 +1,47 @@
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Card } from '@/components/ui/Card'
+import { Callout } from '@/components/ui/Callout'
+import { LuChevronRight } from 'react-icons/lu'
 
 export const metadata = {
-  title: 'Community – Building Better Communities | HomeHub',
-  description: 'Foster stronger communities with HomeHub Community. Enable resident communication, local news, and neighbourhood connections through one platform.',
+  title: 'Community – Resident Engagement | HomeHub',
+  description:
+    'Build stronger relationships between housing providers and residents through targeted communication, community updates, and digital engagement tools.',
 }
 
-const features = [
+const plannedSections = [
   {
-    title: 'Community Noticeboard',
-    description: 'Give housing providers a direct channel to residents for announcements, updates, and local news — cutting through the noise of email.',
+    title: 'Announcements & updates',
+    description:
+      'Send targeted announcements to residents by property, neighbourhood, or tenancy type. Keep residents informed about works, changes, and important notices.',
   },
   {
-    title: 'Resident Forums',
-    description: 'Enable residents to connect with neighbours, share local knowledge, and build a sense of belonging in their community.',
+    title: 'Community messaging',
+    description:
+      'Two-way messaging between residents and housing teams — enabling faster responses, clearer communication, and a better resident experience.',
   },
   {
-    title: 'Events & Activities',
-    description: 'Promote community events, resident meetings, and local activities directly through the app to drive engagement and attendance.',
+    title: 'Resident engagement tools',
+    description:
+      'Surveys, polls, and check-ins that help housing providers understand resident needs, gather feedback, and demonstrate responsiveness.',
   },
   {
-    title: 'Neighbourhood Alerts',
-    description: 'Keep residents informed about local disruptions, planned works, or safety notices with targeted push notifications.',
+    title: 'Digital inclusion support',
+    description:
+      'Simple, accessible interfaces designed to support residents with varying levels of digital confidence, including older and vulnerable residents.',
   },
   {
-    title: 'Wellbeing Services',
-    description: 'Signpost residents to local support services, food banks, mental health resources, and community groups with a single tap.',
+    title: 'Trust & transparency features',
+    description:
+      'Visible communication records and response tracking that help build trust between residents and their housing provider over time.',
   },
   {
-    title: 'Resident Surveys',
-    description: 'Gather structured feedback from residents to inform service improvements and demonstrate that their voices are heard.',
+    title: 'Social value reporting',
+    description:
+      'Engagement data and resident interaction metrics that support social value reporting, TPAS assessments, and Housing Ombudsman evidence requirements.',
   },
 ]
 
@@ -40,16 +51,28 @@ export default function CommunityPage() {
       <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Platform</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+              Platform
+            </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Community
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-white/70 sm:text-xl">
-              Build stronger, more connected communities. HomeHub gives housing providers the tools to communicate meaningfully with residents and foster genuine neighbourhood belonging.
+              Build stronger relationships between housing providers and residents through targeted
+              communication, community updates, and digital engagement tools that go beyond
+              reporting repairs.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/book-demo">Book a Demo</Button>
-              <Button href="/landlords/resident-engagement" variant="outline" color="violet" className="border-white/30 text-white hover:border-white/60">
+              <Button href="/book-demo" color="accent">
+                Book a Demo
+                <LuChevronRight className="ml-0.5 h-4 w-4" />
+              </Button>
+              <Button
+                href="/landlords/resident-engagement"
+                variant="outline"
+                color="violet"
+                className="border-white/30 text-white hover:border-white/60"
+              >
                 Resident Engagement
               </Button>
             </div>
@@ -57,24 +80,29 @@ export default function CommunityPage() {
         </Container>
       </Section>
 
-      <Section className="bg-gray-50 py-16 sm:py-24">
+      <Section className="bg-bg-muted py-16 sm:py-24">
         <Container>
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              More than an app — a community platform
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Great housing is more than bricks and mortar. HomeHub Community helps you create environments where residents thrive together.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <div key={feature.title} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-                <div className="mb-4 h-1 w-12 rounded-full bg-amber-400" />
-                <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+          <Callout variant="neutral" title="Page in development">
+            This page is being developed. Full content, UI visuals, and
+            design will be added prior to launch.
+          </Callout>
+
+          <div className="mt-14">
+            <SectionHeader
+              eyebrow="Planned content"
+              heading="What this page will contain"
+              description="The Community page will position HomeHub as more than a repairs platform — it will demonstrate how the platform supports ongoing resident relationships, trust, and social value."
+            />
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {plannedSections.map((section) => (
+                <Card key={section.title}>
+                  <h3 className="text-base font-semibold text-fg">{section.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                    {section.description}
+                  </p>
+                </Card>
+              ))}
+            </div>
           </div>
         </Container>
       </Section>

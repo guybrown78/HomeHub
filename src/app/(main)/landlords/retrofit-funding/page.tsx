@@ -1,36 +1,47 @@
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Card } from '@/components/ui/Card'
+import { Callout } from '@/components/ui/Callout'
+import { LuChevronRight } from 'react-icons/lu'
 
 export const metadata = {
   title: 'Retrofit & Funding | HomeHub for Landlords',
-  description: 'Navigate retrofit schemes and funding opportunities with HomeHub. Identify eligible properties, access guidance, and track your decarbonisation progress.',
+  description:
+    'Support retrofit programme delivery through resident engagement, communication during works, and evidence gathering for funding applications.',
 }
 
-const features = [
+const plannedSections = [
   {
-    title: 'Scheme Eligibility Matching',
-    description: 'Automatically match properties in your portfolio against current and upcoming retrofit funding schemes — so you never miss an opportunity.',
+    title: 'Retrofit journey communication',
+    description:
+      'Keep residents informed before, during, and after retrofit works — explaining what is happening, why, and what to expect — reducing anxiety and improving cooperation.',
   },
   {
-    title: 'EPC Improvement Planning',
-    description: 'Generate property-level improvement plans showing the most cost-effective measures to raise energy ratings to meet incoming MEES requirements.',
+    title: 'Resident engagement during works',
+    description:
+      'Tools to gather resident feedback, manage appointment scheduling, and maintain two-way communication throughout the retrofit programme.',
   },
   {
-    title: 'Funding Navigator',
-    description: 'A plain-English guide to ECO4, Great British Insulation Scheme, Social Housing Decarbonisation Fund, and other available grants.',
+    title: 'Funding support & awareness',
+    description:
+      'Help residents and housing providers understand available retrofit funding schemes — from ECO4 to the Warm Homes Plan — with tailored guidance based on property data.',
   },
   {
-    title: 'Resident Consent Workflow',
-    description: 'Manage resident communications and consent for retrofit surveys and works, with full audit trail and digital sign-off.',
+    title: 'Evidence gathering',
+    description:
+      'Collect and store resident responses, engagement records, and programme data in formats suitable for funding applications and post-programme reporting.',
   },
   {
-    title: 'Contractor Coordination',
-    description: 'Connect directly with accredited retrofit contractors through the platform, managing the works pipeline from assessment to completion.',
+    title: 'Programme coordination',
+    description:
+      'How HomeHub supports contractors and housing providers in coordinating multi-property retrofit programmes — with visibility across works status and resident readiness.',
   },
   {
-    title: 'Decarbonisation Reporting',
-    description: 'Track your portfolio\'s retrofit progress against your net zero targets with clear, board-ready reporting and trend analysis.',
+    title: 'Net zero progress tracking',
+    description:
+      'Track EPC improvements, energy savings, and net zero progress across a housing portfolio before and after retrofit intervention.',
   },
 ]
 
@@ -40,41 +51,58 @@ export default function RetrofitFundingPage() {
       <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Landlords</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+              Landlords
+            </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Retrofit &amp; Funding
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-white/70 sm:text-xl">
-              Unlock funding, plan improvements, and hit your net zero targets. HomeHub makes retrofit manageable for housing providers of every size.
+              Successful retrofit programmes depend on communication and engagement, not just
+              installation. HomeHub supports resident buy-in, programme coordination, and the
+              evidence gathering that funding applications require.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/book-demo">Book a Demo</Button>
-              <Button href="/platform/energy" variant="outline" color="violet" className="border-white/30 text-white hover:border-white/60">
-                Energy Platform
+              <Button href="/book-demo" color="accent">
+                Book a Demo
+                <LuChevronRight className="ml-0.5 h-4 w-4" />
+              </Button>
+              <Button
+                href="/platform/energy"
+                variant="outline"
+                color="violet"
+                className="border-white/30 text-white hover:border-white/60"
+              >
+                See Energy Platform
               </Button>
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section className="bg-gray-50 py-16 sm:py-24">
+      <Section className="bg-bg-muted py-16 sm:py-24">
         <Container>
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              Navigate the retrofit landscape with confidence
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Retrofit funding is complex and constantly changing. HomeHub cuts through the complexity to help you access the right schemes for your properties and your residents.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <div key={feature.title} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-                <div className="mb-4 h-1 w-12 rounded-full bg-amber-400" />
-                <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+          <Callout variant="neutral" title="Page in development">
+            This page is being developed. Full content, retrofit journey
+            visuals, and programme coordination diagrams will be added prior to launch.
+          </Callout>
+
+          <div className="mt-14">
+            <SectionHeader
+              eyebrow="Planned content"
+              heading="What this page will contain"
+              description="The Retrofit & Funding page will position HomeHub within the sustainability and retrofit space — showing how engagement and communication are as important as the physical works."
+            />
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {plannedSections.map((section) => (
+                <Card key={section.title}>
+                  <h3 className="text-base font-semibold text-fg">{section.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                    {section.description}
+                  </p>
+                </Card>
+              ))}
+            </div>
           </div>
         </Container>
       </Section>

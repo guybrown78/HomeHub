@@ -1,37 +1,47 @@
 import { Container } from '@/components/Container'
-import { Button } from '@/components/Button'
-import { AppStoreLink } from '@/components/AppStoreLink'
 import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Card } from '@/components/ui/Card'
+import { Callout } from '@/components/ui/Callout'
+import { AppStoreLink } from '@/components/AppStoreLink'
+import { GooglePlayLink } from '@/components/GooglePlayLink'
 
 export const metadata = {
   title: 'For Tenants | HomeHub',
-  description: 'HomeHub connects tenants with their housing provider. Report repairs, track progress, access your tenancy documents, and stay connected to your community.',
+  description:
+    'Report issues, track repairs, access support, and stay connected with your housing provider — all from the HomeHub app.',
 }
 
-const benefits = [
+const plannedSections = [
   {
-    title: 'Report Repairs in Seconds',
-    description: 'No more sitting on hold. Submit a repair request with photos directly from your phone, any time of day or night.',
+    title: 'Reporting issues',
+    description:
+      'How tenants use the app to report repairs, damp, and other issues in seconds — with photo uploads, descriptions, and instant confirmation that their report has been received.',
   },
   {
-    title: 'Track Your Repair',
-    description: 'See exactly where your repair is in the process and get notified the moment there\'s an update — no chasing needed.',
+    title: 'Tracking repairs',
+    description:
+      'Real-time status updates that keep tenants informed at every stage — from initial report through contractor assignment to final resolution.',
   },
   {
-    title: 'Access Your Documents',
-    description: 'Your tenancy agreement, property guides, safety certificates, and important notices — all in one secure place.',
+    title: 'Communicating with your landlord',
+    description:
+      'Two-way messaging between tenants and housing teams — making it easy to ask questions, share updates, and receive important information.',
   },
   {
-    title: 'Stay Informed',
-    description: 'Get important updates from your housing provider directly to your phone, so you\'re never out of the loop.',
+    title: 'Support & guidance',
+    description:
+      'Access to energy advice, home maintenance guidance, and support resources — all tailored to the specific property and tenancy.',
   },
   {
-    title: 'Connect with Your Community',
-    description: 'Meet your neighbours, discover local events, and access community resources through the HomeHub community board.',
+    title: 'Notifications & updates',
+    description:
+      'Timely notifications for appointment confirmations, repair updates, important notices, and community announcements — so tenants always know what is happening.',
   },
   {
-    title: 'Energy Advice',
-    description: 'Get personalised energy saving tips and understand your EPC rating to help reduce your bills throughout the year.',
+    title: 'App download',
+    description:
+      'A prominent, easy-to-follow CTA guiding tenants to download HomeHub from the App Store or Google Play — with QR code and direct links.',
   },
 ]
 
@@ -41,41 +51,48 @@ export default function TenantsPage() {
       <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Residents</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+              Residents
+            </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               For Tenants
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-white/70 sm:text-xl">
-              Your home, your voice, your community. HomeHub puts everything you need to manage your tenancy in the palm of your hand.
+              Report issues, track repairs, and stay connected with your housing provider —
+              all from your phone. HomeHub makes it simple to feel heard, informed, and
+              supported in your home.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <AppStoreLink color="white" />
+              <GooglePlayLink color="white" />
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section className="bg-gray-50 py-16 sm:py-24">
+      <Section className="bg-bg-muted py-16 sm:py-24">
         <Container>
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              Everything you need, right in your pocket
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              HomeHub is free for tenants whose housing provider is on the platform. Check with your landlord to see if you&apos;re eligible.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-                <div className="mb-4 h-1 w-12 rounded-full bg-amber-400" />
-                <h3 className="text-lg font-semibold text-gray-900">{benefit.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-12">
-            <Button href="/residents/download-app">Download the App</Button>
+          <Callout variant="neutral" title="Page in development">
+            This page is being developed. Full content, mobile app
+            visuals, and resident-focused design will be added prior to launch.
+          </Callout>
+
+          <div className="mt-14">
+            <SectionHeader
+              eyebrow="Planned content"
+              heading="What this page will contain"
+              description="The Tenants page will be simple, friendly, and app-focused — making HomeHub feel approachable and driving downloads among residents."
+            />
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {plannedSections.map((section) => (
+                <Card key={section.title}>
+                  <h3 className="text-base font-semibold text-fg">{section.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                    {section.description}
+                  </p>
+                </Card>
+              ))}
+            </div>
           </div>
         </Container>
       </Section>

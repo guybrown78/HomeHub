@@ -1,46 +1,47 @@
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Card } from '@/components/ui/Card'
+import { Callout } from '@/components/ui/Callout'
+import { LuChevronRight } from 'react-icons/lu'
 
 export const metadata = {
   title: 'Partners & Sponsors | HomeHub',
-  description: 'HomeHub works with leading organisations in housing, energy, and technology. Explore our partner ecosystem and find out how to work with us.',
+  description:
+    'HomeHub works alongside housing innovators, retrofit specialists, and organisations committed to better outcomes for residents and communities.',
 }
 
-const partnerTypes = [
+const plannedSections = [
   {
-    type: 'Technology Partners',
-    description: 'We integrate with the leading housing management, CRM, and data platforms to deliver a seamless experience for housing providers.',
-    partners: ['Aareon', 'Civica', 'MRI Software', 'Capita', 'Salesforce'],
+    title: 'Partners & sponsors',
+    description:
+      'A logo grid and short descriptions of the organisations HomeHub works alongside — housing associations, retrofit bodies, technology partners, and funding sponsors.',
   },
   {
-    type: 'Retrofit & Energy Partners',
-    description: 'Our energy and retrofit partners help residents and housing providers access funding, expertise, and installation services.',
-    partners: ['PAS 2035 Accredited Assessors', 'ECO4 Installers', 'SHDF Delivery Partners'],
+    title: 'Retrofit partnerships',
+    description:
+      'How HomeHub collaborates with retrofit contractors, energy assessors, and programme delivery organisations to support net zero housing programmes.',
   },
   {
-    type: 'Sector Partners',
-    description: 'We work closely with the organisations shaping the future of housing in the UK.',
-    partners: ['National Housing Federation', 'Chartered Institute of Housing', 'Housing Technology'],
-  },
-]
-
-const partnerBenefits = [
-  {
-    title: 'Technical Integration',
-    description: 'Our open API and established integration framework makes connecting your platform to HomeHub straightforward and secure.',
+    title: 'Housing innovation',
+    description:
+      'Organisations and initiatives in the housing sector that share HomeHub\'s commitment to better resident outcomes, digital engagement, and operational efficiency.',
   },
   {
-    title: 'Co-Marketing Opportunities',
-    description: 'Reach housing providers and residents through joint content, events, and digital campaigns with HomeHub\'s growing audience.',
+    title: 'Shared goals',
+    description:
+      'The values and objectives HomeHub looks for in partners — a commitment to residents, openness to collaboration, and a shared belief in the value of digital housing tools.',
   },
   {
-    title: 'Referral Programme',
-    description: 'Earn commission for introducing housing providers to HomeHub, with a structured partner tier programme offering increasing benefits.',
+    title: 'Sponsor highlights',
+    description:
+      'Featured sponsorship slots recognising organisations that have supported HomeHub\'s development, pilot programmes, and community engagement activities.',
   },
   {
-    title: 'Shared Expertise',
-    description: 'Collaborate with our team on research, thought leadership, and sector events to position your organisation as a housing sector leader.',
+    title: 'Partnership opportunities',
+    description:
+      'An open invitation for housing providers, contractors, and technology organisations to explore partnership arrangements — with a simple CTA to start a conversation.',
   },
 ]
 
@@ -50,58 +51,57 @@ export default function PartnersPage() {
       <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Company</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+              Partners
+            </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Partners &amp; Sponsors
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-white/70 sm:text-xl">
-              Great housing outcomes are built through collaboration. HomeHub works with technology providers, retrofit specialists, and sector organisations who share our commitment to better housing.
+              HomeHub works alongside housing innovators, retrofit specialists, and
+              organisations committed to better outcomes for residents and communities.
+              We are stronger together.
             </p>
-            <div className="mt-10">
-              <Button href="/contact">Become a Partner</Button>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button href="/contact" color="accent">
+                Become a Partner
+                <LuChevronRight className="ml-0.5 h-4 w-4" />
+              </Button>
+              <Button
+                href="/about"
+                variant="outline"
+                color="violet"
+                className="border-white/30 text-white hover:border-white/60"
+              >
+                About HomeHub
+              </Button>
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section className="bg-gray-50 py-16 sm:py-24">
+      <Section className="bg-bg-muted py-16 sm:py-24">
         <Container>
-          <div className="space-y-12">
-            {partnerTypes.map((pt) => (
-              <div key={pt.type} className="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-                <h2 className="text-xl font-bold text-gray-900">{pt.type}</h2>
-                <p className="mt-2 text-gray-600">{pt.description}</p>
-                <div className="mt-6 flex flex-wrap gap-3">
-                  {pt.partners.map((p) => (
-                    <span key={p} className="rounded-full bg-brand-50 px-4 py-2 text-sm font-medium text-brand-950">
-                      {p}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <Callout variant="neutral" title="Page in development">
+            This page is being developed. Partner logos, sponsor
+            details, and partnership content will be added prior to launch.
+          </Callout>
 
-          <div className="mt-16">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">Why partner with HomeHub?</h2>
-            <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
-              {partnerBenefits.map((benefit) => (
-                <div key={benefit.title} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-                  <div className="mb-4 h-1 w-12 rounded-full bg-amber-400" />
-                  <h3 className="text-lg font-semibold text-gray-900">{benefit.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-gray-600">{benefit.description}</p>
-                </div>
+          <div className="mt-14">
+            <SectionHeader
+              eyebrow="Planned content"
+              heading="What this page will contain"
+              description="The Partners page will be clean and professional — reinforcing legitimacy and commercial confidence through the organisations HomeHub works alongside."
+            />
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {plannedSections.map((section) => (
+                <Card key={section.title}>
+                  <h3 className="text-base font-semibold text-fg">{section.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                    {section.description}
+                  </p>
+                </Card>
               ))}
-            </div>
-          </div>
-
-          <div className="mt-16 rounded-2xl bg-brand-50 p-8 sm:p-12">
-            <h2 className="text-2xl font-bold text-brand-950">Ready to explore a partnership?</h2>
-            <p className="mt-3 text-gray-600">
-              Get in touch with our partnerships team to discuss how we can work together.
-            </p>
-            <div className="mt-6">
-              <Button href="/contact">Contact Our Team</Button>
             </div>
           </div>
         </Container>

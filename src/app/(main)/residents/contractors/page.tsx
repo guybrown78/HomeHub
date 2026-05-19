@@ -1,36 +1,47 @@
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Card } from '@/components/ui/Card'
+import { Callout } from '@/components/ui/Callout'
+import { LuChevronRight } from 'react-icons/lu'
 
 export const metadata = {
   title: 'For Contractors | HomeHub',
-  description: 'Join the HomeHub contractor network. Receive job instructions, manage your schedule, and communicate with housing providers through one simple platform.',
+  description:
+    'A future-facing landing page for contractor and retrofit partnerships — supporting collaboration, resident engagement during works, and programme coordination.',
 }
 
-const benefits = [
+const plannedSections = [
   {
-    title: 'Job Management Dashboard',
-    description: 'View all assigned jobs in one place, with clear instructions, property details, and resident contact information ready when you need it.',
+    title: 'Contractor collaboration',
+    description:
+      'How HomeHub connects approved contractors with housing providers — shared job visibility, appointment management, and completion tracking in one place.',
   },
   {
-    title: 'Digital Job Sheets',
-    description: 'Complete digital job sheets on site, capture photos of completed work, and submit evidence of compliance with a few taps.',
+    title: 'Retrofit support',
+    description:
+      'Tools for retrofit contractors to coordinate works, communicate with residents, and capture evidence for programme reporting and funding submissions.',
   },
   {
-    title: 'Scheduling & Calendar',
-    description: 'Manage your schedule directly through the platform, with clear visibility of upcoming appointments and any changes in real time.',
+    title: 'Resident engagement during works',
+    description:
+      'How HomeHub supports resident communication before and during contractor visits — reducing no-access rates, managing expectations, and improving satisfaction.',
   },
   {
-    title: 'Resident Communication',
-    description: 'Message residents ahead of appointments, confirm arrival times, and keep them informed without sharing personal contact details.',
+    title: 'Communication visibility',
+    description:
+      'Shared communication records between contractors and housing providers — ensuring everyone has the same information and accountability is clear.',
   },
   {
-    title: 'Compliance Documentation',
-    description: 'Store and submit safety certificates, COSHH records, and completion reports digitally — reducing paperwork and admin overhead.',
+    title: 'Programme coordination',
+    description:
+      'How HomeHub supports multi-property retrofit and repair programmes — tracking progress, resident readiness, and works status across large-scale projects.',
   },
   {
-    title: 'Performance Tracking',
-    description: 'View your completion rates, resident satisfaction scores, and response time metrics to demonstrate value and win more work.',
+    title: 'Partnership pathway',
+    description:
+      'An early signal of HomeHub\'s ambition to build a formal contractor and retrofit partner network — with an invitation to start a conversation.',
   },
 ]
 
@@ -40,47 +51,58 @@ export default function ContractorsPage() {
       <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Residents</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+              Partners
+            </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               For Contractors
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-white/70 sm:text-xl">
-              Spend less time on admin and more time doing great work. HomeHub connects you directly with housing providers and gives you everything you need to manage jobs efficiently.
+              HomeHub is building a contractor and retrofit partner network. Work alongside
+              housing providers to deliver better outcomes for residents — with shared
+              visibility, coordinated communication, and programme-level reporting.
             </p>
-            <div className="mt-10">
-              <Button href="/contact">Get in Touch</Button>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button href="/contact" color="accent">
+                Get in Touch
+                <LuChevronRight className="ml-0.5 h-4 w-4" />
+              </Button>
+              <Button
+                href="/partners"
+                variant="outline"
+                color="violet"
+                className="border-white/30 text-white hover:border-white/60"
+              >
+                Our Partners
+              </Button>
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section className="bg-gray-50 py-16 sm:py-24">
+      <Section className="bg-bg-muted py-16 sm:py-24">
         <Container>
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              Built for trades professionals who value their time
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              HomeHub gives you everything you need to deliver outstanding work — from job briefing to completion sign-off — without the paperwork burden.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-                <div className="mb-4 h-1 w-12 rounded-full bg-amber-400" />
-                <h3 className="text-lg font-semibold text-gray-900">{benefit.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
+          <Callout variant="neutral" title="Page in development">
+            This page is being developed. This is an early-stage,
+            future-facing page — full content and design will be developed as the contractor
+            partnership programme matures.
+          </Callout>
 
-          <div className="mt-16 rounded-2xl bg-brand-50 p-8 sm:p-12">
-            <h2 className="text-2xl font-bold text-brand-950">Join our contractor network</h2>
-            <p className="mt-3 text-gray-600">
-              Interested in becoming an approved HomeHub contractor? Get in touch with our team.
-            </p>
-            <div className="mt-6">
-              <Button href="/contact">Contact Us</Button>
+          <div className="mt-14">
+            <SectionHeader
+              eyebrow="Planned content"
+              heading="What this page will contain"
+              description="The Contractors page will be lightweight but forward-looking — signalling HomeHub's ambition to build a contractor network while supporting early partnership conversations."
+            />
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {plannedSections.map((section) => (
+                <Card key={section.title}>
+                  <h3 className="text-base font-semibold text-fg">{section.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                    {section.description}
+                  </p>
+                </Card>
+              ))}
             </div>
           </div>
         </Container>

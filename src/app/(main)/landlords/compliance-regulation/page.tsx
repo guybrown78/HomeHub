@@ -1,36 +1,47 @@
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Card } from '@/components/ui/Card'
+import { Callout } from '@/components/ui/Callout'
+import { LuChevronRight } from 'react-icons/lu'
 
 export const metadata = {
   title: 'Compliance & Regulation | HomeHub for Landlords',
-  description: 'Stay ahead of housing compliance obligations with HomeHub. Track safety certificates, EPC ratings, and regulatory requirements across your entire portfolio.',
+  description:
+    'Stay on top of Awaab\'s Law, damp and mould obligations, and housing standards with HomeHub\'s built-in audit trails, compliance tooling, and evidence-based reporting.',
 }
 
-const features = [
+const plannedSections = [
   {
-    title: 'Safety Certificate Tracking',
-    description: 'Centrally manage gas safety, electrical certificates, fire risk assessments, and legionella checks with automated renewal reminders.',
+    title: "Awaab's Law compliance",
+    description:
+      "Track investigation and remediation timelines against Awaab's Law requirements. Automated alerts notify your team before deadlines are breached.",
   },
   {
-    title: 'EPC Portfolio View',
-    description: 'See every property\'s energy performance rating in one place, with actionable upgrade pathways to meet incoming MEES regulations.',
+    title: 'Damp & mould tracking',
+    description:
+      'Structured reporting for damp and mould issues with guided photo prompts, severity categorisation, and escalation workflows for urgent cases.',
   },
   {
-    title: 'Regulatory Audit Trail',
-    description: 'Maintain a complete, timestamped record of all compliance actions for every property — ready for inspection at any time.',
+    title: 'Evidence-based audit trails',
+    description:
+      'Every action — report, inspection, communication, remediation, sign-off — is logged with timestamps and responsible parties for regulatory defence.',
   },
   {
-    title: 'Decarbonisation Planning',
-    description: 'Model your net zero pathway across your housing stock, identifying priority properties for retrofit investment.',
+    title: 'Communication records',
+    description:
+      'A full history of resident communications linked to each case, demonstrating responsiveness and compliance with Housing Ombudsman expectations.',
   },
   {
-    title: 'Tenant Satisfaction Metrics',
-    description: 'Evidence your compliance with Tenant Satisfaction Measures (TSM) requirements through structured resident feedback and reporting.',
+    title: 'Regulatory reporting',
+    description:
+      'Export compliance data for regulatory submissions, internal governance reviews, and Housing Ombudsman investigations in structured, auditable formats.',
   },
   {
-    title: 'Regulatory Alerts',
-    description: 'Stay ahead of legislative changes with in-platform alerts and guidance as new housing regulations come into force.',
+    title: 'Visibility & accountability dashboard',
+    description:
+      'Portfolio-wide compliance status at a glance — open cases, approaching deadlines, resolved issues, and team performance across all properties.',
   },
 ]
 
@@ -40,41 +51,58 @@ export default function ComplianceRegulationPage() {
       <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Landlords</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+              Landlords
+            </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Compliance &amp; Regulation
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-white/70 sm:text-xl">
-              Housing compliance is more complex than ever. HomeHub gives landlords and housing providers the visibility and control to stay ahead — not just keep up.
+              Stay on top of your obligations. HomeHub gives housing providers the structure,
+              evidence, and visibility they need to meet Awaab&apos;s Law, damp and mould
+              requirements, and housing standards — with confidence.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/book-demo">Book a Demo</Button>
-              <Button href="/resources/guides" variant="outline" color="violet" className="border-white/30 text-white hover:border-white/60">
-                Compliance Guides
+              <Button href="/book-demo" color="accent">
+                Book a Demo
+                <LuChevronRight className="ml-0.5 h-4 w-4" />
+              </Button>
+              <Button
+                href="/platform/resolve"
+                variant="outline"
+                color="violet"
+                className="border-white/30 text-white hover:border-white/60"
+              >
+                See Resolve Platform
               </Button>
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section className="bg-gray-50 py-16 sm:py-24">
+      <Section className="bg-bg-muted py-16 sm:py-24">
         <Container>
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              From reactive to proactive compliance management
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Stop chasing certificates and start managing compliance strategically. HomeHub gives you the full picture across your entire portfolio.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map((feature) => (
-              <div key={feature.title} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-                <div className="mb-4 h-1 w-12 rounded-full bg-amber-400" />
-                <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">{feature.description}</p>
-              </div>
-            ))}
+          <Callout variant="neutral" title="Page in development">
+            This page is being developed. Full content, compliance
+            dashboard visuals, and audit timeline designs will be added prior to launch.
+          </Callout>
+
+          <div className="mt-14">
+            <SectionHeader
+              eyebrow="Planned content"
+              heading="What this page will contain"
+              description="The Compliance & Regulation page will communicate confidence and structure — showing housing providers how HomeHub makes compliance systematic, not manual."
+            />
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {plannedSections.map((section) => (
+                <Card key={section.title}>
+                  <h3 className="text-base font-semibold text-fg">{section.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                    {section.description}
+                  </p>
+                </Card>
+              ))}
+            </div>
           </div>
         </Container>
       </Section>

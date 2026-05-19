@@ -1,37 +1,47 @@
 import { Container } from '@/components/Container'
-import { AppStoreLink } from '@/components/AppStoreLink'
-import { Button } from '@/components/Button'
 import { Section } from '@/components/Section'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Card } from '@/components/ui/Card'
+import { Callout } from '@/components/ui/Callout'
+import { AppStoreLink } from '@/components/AppStoreLink'
+import { GooglePlayLink } from '@/components/GooglePlayLink'
 
 export const metadata = {
   title: 'For Homeowners | HomeHub',
-  description: 'HomeHub helps homeowners manage their property, access retrofit funding, and connect with local services — all through one easy-to-use app.',
+  description:
+    'Understand your energy usage, improve your home\'s efficiency, and access guidance and support — all from one place with HomeHub.',
 }
 
-const benefits = [
+const plannedSections = [
   {
-    title: 'Property Management Hub',
-    description: 'Keep all your property documents, warranties, and maintenance records in one organised, always-accessible place.',
+    title: 'Energy bill understanding',
+    description:
+      'Clear, simple breakdowns of energy usage and estimated costs — helping homeowners understand what they are spending and where savings can be made.',
   },
   {
-    title: 'Retrofit & Funding Guidance',
-    description: 'Discover which home improvement grants and schemes you may qualify for, from insulation to heat pumps and solar panels.',
+    title: 'Home efficiency insights',
+    description:
+      'EPC data, energy ratings, and practical improvement suggestions presented in plain language — making it easy to understand a property\'s efficiency potential.',
   },
   {
-    title: 'Energy Performance Insights',
-    description: 'Understand your home\'s EPC rating and get personalised recommendations for improvements that save money and increase property value.',
+    title: 'Improvement guidance',
+    description:
+      'Step-by-step guidance on home improvements — from draught proofing and insulation to solar and heat pumps — including funding options where applicable.',
   },
   {
-    title: 'Trusted Contractor Network',
-    description: 'Access a vetted network of local tradespeople, with reviews from your community to help you make informed decisions.',
+    title: 'Support & resources',
+    description:
+      'Access to guides, advice, and support resources relevant to homeownership — from maintenance tips to energy support schemes and local services.',
   },
   {
-    title: 'Home Maintenance Reminders',
-    description: 'Never miss a boiler service, guttering check, or seasonal task with smart reminders tailored to your property.',
+    title: 'Simple dashboard',
+    description:
+      'A clean, easy-to-read home overview showing energy performance, upcoming reminders, and useful information — designed for non-technical users.',
   },
   {
-    title: 'Community Connection',
-    description: 'Stay connected to your neighbourhood with local news, community alerts, and neighbour-to-neighbour support.',
+    title: 'App download',
+    description:
+      'A clear CTA encouraging homeowners to download the HomeHub app and start exploring their home data — with App Store and Google Play links.',
   },
 ]
 
@@ -41,41 +51,48 @@ export default function HomeownersPage() {
       <Section first className="bg-brand-950 py-20 sm:py-32">
         <Container>
           <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-widest text-amber-400">Residents</p>
+            <p className="text-sm font-semibold uppercase tracking-widest text-accent-400">
+              Residents
+            </p>
             <h1 className="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
               For Homeowners
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-white/70 sm:text-xl">
-              Own your home, own your data. HomeHub gives homeowners the tools to manage their property smarter, access funding opportunities, and build community.
+              Understand your energy usage, find ways to reduce your bills, and get guidance
+              on improving your home — all from one simple app. HomeHub puts your home
+              data in your pocket.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <AppStoreLink color="white" />
+              <GooglePlayLink color="white" />
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section className="bg-gray-50 py-16 sm:py-24">
+      <Section className="bg-bg-muted py-16 sm:py-24">
         <Container>
-          <div className="max-w-2xl">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">
-              Your home deserves smarter support
-            </h2>
-            <p className="mt-4 text-lg text-gray-600">
-              Whether you&apos;re a first-time buyer or long-term homeowner, HomeHub helps you stay on top of your property and make the most of available support.
-            </p>
-          </div>
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((benefit) => (
-              <div key={benefit.title} className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm">
-                <div className="mb-4 h-1 w-12 rounded-full bg-amber-400" />
-                <h3 className="text-lg font-semibold text-gray-900">{benefit.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-600">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-12">
-            <Button href="/residents/download-app">Download the App</Button>
+          <Callout variant="neutral" title="Page in development">
+            This page is being developed. Full content, energy visuals,
+            and homeowner-focused design will be added prior to launch.
+          </Callout>
+
+          <div className="mt-14">
+            <SectionHeader
+              eyebrow="Planned content"
+              heading="What this page will contain"
+              description="The Homeowners page will be calm, educational, and helpful — expanding HomeHub's audience beyond social housing and supporting energy-related SEO."
+            />
+            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {plannedSections.map((section) => (
+                <Card key={section.title}>
+                  <h3 className="text-base font-semibold text-fg">{section.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-fg-muted">
+                    {section.description}
+                  </p>
+                </Card>
+              ))}
+            </div>
           </div>
         </Container>
       </Section>
