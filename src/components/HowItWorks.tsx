@@ -47,29 +47,32 @@ export function HowItWorks() {
         <div className="relative mt-16">
           {/* Horizontal connector line (desktop only) */}
           <div
-            className="absolute left-1/6 right-1/6 top-8 hidden h-px bg-border lg:block"
+            className="absolute left-1/6 right-1/6 top-8 hidden h-0.5 rounded-full bg-brand-200 lg:block"
             aria-hidden="true"
           />
 
           <FadeInStagger className="grid grid-cols-1 gap-10 lg:grid-cols-3" stagger={0.12}>
             {steps.map((step, index) => (
               <FadeInItem key={step.number}>
-              <div className="flex flex-col items-center text-center">
-                {/* Step icon circle */}
-                <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-primary shadow-md ring-4 ring-bg">
+              <div className="group flex flex-col items-center text-center">
+                {/* Icon circle — no padding above so center sits exactly on the line (top-8 = h-8 = half of h-16) */}
+                <div className="relative z-10 flex h-16 w-16 flex-none items-center justify-center rounded-full bg-primary shadow-md ring-4 ring-bg transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:ring-brand-200">
                   <step.Icon
                     className="h-7 w-7 text-primary-fg"
                     strokeWidth={1.75}
                   />
-                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-secondary text-xs font-bold text-secondary-fg">
+                  <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-secondary text-xs font-bold text-secondary-fg transition-transform duration-300 group-hover:scale-110">
                     {index + 1}
                   </span>
                 </div>
 
-                <h3 className="mt-6 text-lg font-bold text-fg">{step.title}</h3>
-                <p className="mt-2 max-w-xs text-sm leading-relaxed text-fg-muted">
-                  {step.description}
-                </p>
+                {/* Text block lifts independently on hover */}
+                <div className="mt-6 rounded-2xl px-5 pb-4 pt-3 transition-all duration-300 group-hover:-translate-y-1 group-hover:bg-brand-50/70">
+                  <h3 className="text-lg font-bold text-fg transition-colors duration-200 group-hover:text-brand-700">{step.title}</h3>
+                  <p className="mt-2 max-w-xs text-sm leading-relaxed text-fg-muted">
+                    {step.description}
+                  </p>
+                </div>
               </div>
               </FadeInItem>
             ))}
