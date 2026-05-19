@@ -1,4 +1,6 @@
 import { type Metadata } from 'next'
+import Image from 'next/image'
+import photographySample from '@/images/photography-sample.jpg'
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { TextField, SelectField, Textarea } from '@/components/Fields'
@@ -6,6 +8,7 @@ import { Callout } from '@/components/ui/Callout'
 import { Card } from '@/components/ui/Card'
 import { IllustrationCard } from '@/components/ui/IllustrationCard'
 import { Blob } from '@/components/ui/Blob'
+import { DashboardPreview } from '@/components/ui/DashboardPreview'
 import {
   LuHouse,
   LuBell,
@@ -117,6 +120,7 @@ const navItems = [
   { label: 'Forms', href: '#forms' },
   { label: 'Callouts', href: '#callouts' },
   { label: 'Imagery', href: '#imagery' },
+  { label: 'UI Previews', href: '#ui-previews' },
 ]
 
 /* ── Page ──────────────────────────────────────────────────── */
@@ -798,18 +802,12 @@ export default function DesignSystemPage() {
                 </div>
                 <h3 className="text-base font-bold text-fg">Photography</h3>
               </div>
-              <div className="mb-4 h-44 overflow-hidden rounded-xl bg-brand-100">
-                <div className="flex h-full items-center justify-center text-brand-300">
-                  <svg viewBox="0 0 240 160" className="h-full w-full" aria-hidden>
-                    <rect width="240" height="160" fill="none"/>
-                    <rect x="20" y="30" width="200" height="100" rx="12" fill="oklch(0.882 0.072 282)" />
-                    <circle cx="120" cy="80" r="30" fill="oklch(0.784 0.115 280)" />
-                    <path d="M100 90 Q120 65 140 90" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round"/>
-                    <circle cx="111" cy="77" r="4" fill="white"/>
-                    <circle cx="129" cy="77" r="4" fill="white"/>
-                    <text x="120" y="145" textAnchor="middle" fill="oklch(0.338 0.192 277)" fontSize="11" fontFamily="sans-serif">Stock photo placeholder</text>
-                  </svg>
-                </div>
+              <div className="mb-4 h-44 overflow-hidden rounded-xl">
+                <Image
+                  src={photographySample}
+                  alt="Example housing photography — resident in home environment"
+                  className="h-full w-full object-cover"
+                />
               </div>
               <div className="space-y-2">
                 <p className="text-sm font-semibold text-fg">Guidelines</p>
@@ -960,6 +958,67 @@ export default function DesignSystemPage() {
                 <span className="font-mono text-[10px] text-fg-subtle">{label}</span>
               </div>
             ))}
+          </div>
+        </Section>
+
+        {/* ══════════════════════════════════════════════════════
+            9. UI PREVIEWS
+        ══════════════════════════════════════════════════════ */}
+        <Section id="ui-previews" label="09 — Patterns">
+          <SectionHeading>UI Previews</SectionHeading>
+
+          <p className="mb-10 max-w-2xl text-base text-fg-muted">
+            UI previews are inline product mock-ups embedded within marketing sections. They give
+            visitors a tangible feel for the product without requiring a live demo. Build them
+            from design tokens so they automatically adapt to theme changes.
+          </p>
+
+          <SubHeading>Dashboard Preview</SubHeading>
+          <p className="mb-6 text-sm text-fg-muted">
+            Used in the Landlord Benefits section. Shows a portfolio-level overview with stat
+            tiles, a repairs bar chart, and compliance status rows. Renders using semantic
+            tokens — works on any themed surface.
+          </p>
+
+          <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            {/* Default surface */}
+            <div>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-fg-subtle">Default surface</p>
+              <DashboardPreview />
+            </div>
+
+            {/* Brand-light surface */}
+            <div data-theme="brand-light" className="rounded-3xl bg-bg p-6">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-fg-subtle">Brand-light surface</p>
+              <DashboardPreview />
+            </div>
+          </div>
+
+          <SubHeading>Usage guidelines</SubHeading>
+          <div className="rounded-2xl border border-border bg-card p-6">
+            <ul className="space-y-2.5 text-sm text-fg-muted">
+              <li className="flex items-start gap-2">
+                <LuCircleCheck className="mt-0.5 h-4 w-4 flex-none text-brand-500" strokeWidth={2} />
+                Use realistic but anonymised data — numbers that feel plausible, not inflated
+              </li>
+              <li className="flex items-start gap-2">
+                <LuCircleCheck className="mt-0.5 h-4 w-4 flex-none text-brand-500" strokeWidth={2} />
+                Always use semantic tokens (<code className="rounded bg-brand-50 px-1 text-xs text-brand-700">bg-card</code>,{' '}
+                <code className="rounded bg-brand-50 px-1 text-xs text-brand-700">text-fg</code>) so the preview adapts to section themes
+              </li>
+              <li className="flex items-start gap-2">
+                <LuCircleCheck className="mt-0.5 h-4 w-4 flex-none text-brand-500" strokeWidth={2} />
+                Keep visual complexity proportional to the section — simpler sections need simpler previews
+              </li>
+              <li className="flex items-start gap-2">
+                <LuCircleCheck className="mt-0.5 h-4 w-4 flex-none text-brand-500" strokeWidth={2} />
+                Wrap in a <code className="rounded bg-brand-50 px-1 text-xs text-brand-700">shadow-2xl</code> card to give it depth and separation from the section background
+              </li>
+              <li className="flex items-start gap-2">
+                <LuX className="mt-0.5 h-4 w-4 flex-none text-red-400" strokeWidth={2} />
+                Don&apos;t use actual screenshots — they become outdated and can&apos;t theme-switch
+              </li>
+            </ul>
           </div>
         </Section>
 

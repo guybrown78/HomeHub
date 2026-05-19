@@ -172,8 +172,11 @@ function FeaturesDesktop() {
 
 function FeaturesMobile() {
   let [activeIndex, setActiveIndex] = useState(0)
+  let [changeCount, setChangeCount] = useState(0)
   let slideContainerRef = useRef<React.ElementRef<'div'>>(null)
   let slideRefs = useRef<Array<React.ElementRef<'div'>>>([])
+  let prevIndex = usePrevious(activeIndex)
+  let isForwards = prevIndex === undefined ? true : activeIndex > prevIndex
 
   useEffect(() => {
     let observer = new window.IntersectionObserver(
@@ -181,6 +184,7 @@ function FeaturesMobile() {
         for (let entry of entries) {
           if (entry.isIntersecting && entry.target instanceof HTMLDivElement) {
             setActiveIndex(slideRefs.current.indexOf(entry.target))
+            setChangeCount((c) => c + 1)
             break
           }
         }
@@ -204,9 +208,32 @@ function FeaturesMobile() {
 
   return (
     <>
+      {/* Phone — static, original max-width preserved */}
+      <div className="px-4 sm:px-6">
+        <PhoneFrame className="relative mx-auto w-full max-w-[366px]">
+          <div className="grid w-full">
+            <AnimatePresence initial={false} custom={{ isForwards, changeCount }}>
+              {features.map((feature, featureIndex) =>
+                activeIndex === featureIndex ? (
+                  <motion.div
+                    key={feature.name + changeCount}
+                    {...phoneAnimation}
+                    custom={{ isForwards, changeCount }}
+                    className="col-start-1 row-start-1 w-full pt-6"
+                  >
+                    <feature.screen />
+                  </motion.div>
+                ) : null,
+              )}
+            </AnimatePresence>
+          </div>
+        </PhoneFrame>
+      </div>
+
+      {/* Info card carousel — negative margin pulls cards up to overlap phone bottom */}
       <div
         ref={slideContainerRef}
-        className="-mb-4 flex snap-x snap-mandatory -space-x-4 overflow-x-auto overscroll-x-contain scroll-smooth pb-4 [scrollbar-width:none] sm:-space-x-6 [&::-webkit-scrollbar]:hidden"
+        className="relative z-10 -mb-4 -mt-48 flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {features.map((feature, featureIndex) => (
           <div
@@ -214,23 +241,17 @@ function FeaturesMobile() {
             ref={(ref) => ref && (slideRefs.current[featureIndex] = ref)}
             className="w-full flex-none snap-center px-4 sm:px-6"
           >
-            <div className="relative transform overflow-hidden rounded-2xl px-5 py-6">
-              <PhoneFrame className="relative mx-auto w-full max-w-[366px]">
-                <div className="pt-6">
-                  <feature.screen />
-                </div>
-              </PhoneFrame>
-              <div className="absolute inset-x-0 bottom-0 bg-brand-800/95 p-6 backdrop-blur-sm sm:p-10">
-                <feature.icon className="h-8 w-8 fill-accent-400" />
-                <h3 className="mt-6 text-sm font-semibold text-white sm:text-lg">
-                  {feature.name}
-                </h3>
-                <p className="mt-2 text-sm text-gray-50">{feature.description}</p>
-              </div>
+            <div className="rounded-2xl bg-brand-800/95 p-6 backdrop-blur-sm sm:p-10">
+              <feature.icon className="h-8 w-8 fill-accent-400" />
+              <h3 className="mt-6 text-sm font-semibold text-white sm:text-lg">
+                {feature.name}
+              </h3>
+              <p className="mt-2 text-sm text-gray-50">{feature.description}</p>
             </div>
           </div>
         ))}
       </div>
+
       <div className="mt-6 flex justify-center gap-3">
         {features.map((_, featureIndex) => (
           <button
