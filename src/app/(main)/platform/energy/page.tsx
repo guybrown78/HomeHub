@@ -45,20 +45,66 @@ export const metadata = {
 
 // ─── Inline components ───────────────────────────────────────────────────────
 
-function PlaceholderPanel({
-  description,
-  aspect = 'aspect-[4/3]',
-}: {
-  description: string
-  aspect?: string
-}) {
+function EpcPortfolioPreview() {
+  const stats = [
+    { label: 'Average EPC rating', value: 'C · 72', trend: '+3 pts' },
+    { label: 'Homes below EPC C', value: '18%', trend: '-6% YoY' },
+    { label: 'Retrofit in progress', value: '23', trend: '+5' },
+    { label: 'Improved this year', value: '46', trend: '+12' },
+  ]
+
+  const bands = [
+    { band: 'A', height: 8 },
+    { band: 'B', height: 22 },
+    { band: 'C', height: 58 },
+    { band: 'D', height: 40 },
+    { band: 'E', height: 18 },
+    { band: 'F', height: 9 },
+    { band: 'G', height: 4 },
+  ]
+
   return (
-    <div
-      className={`flex ${aspect} items-center justify-center rounded-2xl border-2 border-dashed border-white/20 bg-white/5 p-8 text-center`}
-    >
-      <div>
-        <LuRadar className="mx-auto h-10 w-10 text-white/30" strokeWidth={1.5} />
-        <p className="mt-3 text-sm font-medium leading-snug text-white/50">{description}</p>
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-2xl backdrop-blur-sm">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wider text-white/40">
+            EPC Portfolio
+          </p>
+          <p className="mt-0.5 text-lg font-bold text-white">Q4 2024</p>
+        </div>
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+          <LuRadar className="h-4 w-4 text-accent-400" strokeWidth={1.75} />
+        </div>
+      </div>
+
+      <div className="mt-4 grid grid-cols-2 gap-3">
+        {stats.map((stat) => (
+          <div key={stat.label} className="rounded-xl bg-white/5 p-3">
+            <p className="text-xs text-white/50">{stat.label}</p>
+            <p className="mt-1 text-lg font-bold text-white">{stat.value}</p>
+            <p className="text-xs font-semibold text-accent-400">{stat.trend}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-5">
+        <p className="mb-2 text-xs font-semibold text-white/40">EPC band distribution</p>
+        <div className="flex h-14 items-end gap-1.5">
+          {bands.map(({ band, height }) => (
+            <div
+              key={band}
+              className="flex-1 rounded-t-sm bg-white/15 transition-all hover:bg-accent-400"
+              style={{ height: `${(height / 58) * 100}%` }}
+            />
+          ))}
+        </div>
+        <div className="mt-1.5 flex gap-1.5">
+          {bands.map(({ band }) => (
+            <span key={band} className="flex-1 text-center text-[10px] font-medium text-white/40">
+              {band}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -318,7 +364,7 @@ export default function EnergyPage() {
             </FadeIn>
 
             <FadeIn delay={0.15}>
-              <PlaceholderPanel description="Portfolio EPC comparison — visual in development" />
+              <EpcPortfolioPreview />
             </FadeIn>
           </div>
         </Container>

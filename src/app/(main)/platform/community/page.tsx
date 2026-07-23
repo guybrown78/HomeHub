@@ -413,16 +413,24 @@ export default function CommunityPage() {
                   Message thread
                 </p>
                 <div className="mt-4 space-y-3">
-                  {[
-                    'Planned works update sent',
-                    'Resident reply received',
-                    'Follow-up scheduled',
-                  ].map((label) => (
-                    <div key={label} className="flex items-center gap-3">
-                      <div className="h-2.5 w-2.5 flex-none rounded-full bg-accent-400" />
-                      <span className="text-sm text-white/70">{label}</span>
-                    </div>
-                  ))}
+                  <div className="ml-auto max-w-[80%] rounded-2xl rounded-tr-sm bg-accent-400 px-4 py-2.5">
+                    <p className="text-sm font-medium text-brand-950">
+                      Planned works starting Monday — access needed 9am&ndash;12pm.
+                    </p>
+                    <p className="mt-1 text-[11px] text-brand-950/60">Landlord · 09:14</p>
+                  </div>
+                  <div className="max-w-[80%] rounded-2xl rounded-tl-sm bg-white/10 px-4 py-2.5">
+                    <p className="text-sm text-white/80">
+                      Thanks for letting me know — I&rsquo;ll be in.
+                    </p>
+                    <p className="mt-1 text-[11px] text-white/40">Resident · 09:22</p>
+                  </div>
+                  <div className="ml-auto max-w-[80%] rounded-2xl rounded-tr-sm bg-accent-400 px-4 py-2.5">
+                    <p className="text-sm font-medium text-brand-950">
+                      Great — we&rsquo;ll confirm once it&rsquo;s complete.
+                    </p>
+                    <p className="mt-1 text-[11px] text-brand-950/60">Landlord · 09:23</p>
+                  </div>
                 </div>
               </div>
             </FadeIn>
