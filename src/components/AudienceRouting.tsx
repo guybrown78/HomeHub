@@ -63,7 +63,8 @@ export function AudienceRouting() {
         <FadeInStagger className="grid grid-cols-1 gap-5 sm:grid-cols-3">
           {audiences.map((audience) => (
             <FadeInItem key={audience.id}>
-            <div
+            <Link
+              href={audience.href}
               data-theme={audience.theme ?? undefined}
               className="group flex h-full flex-col overflow-hidden rounded-3xl bg-bg p-8 transition-transform duration-300 hover:-translate-y-1"
             >
@@ -76,7 +77,7 @@ export function AudienceRouting() {
                 />
               </div>
 
-              <span className="mt-5 text-xs font-semibold uppercase tracking-widest text-fg-subtle">
+              <span className="mt-5 text-sm font-semibold uppercase tracking-widest text-fg-subtle">
                 {audience.label}
               </span>
               <h3 className="mt-2 text-xl font-bold text-fg">
@@ -88,14 +89,11 @@ export function AudienceRouting() {
 
               <div className="mt-6 flex-1" />
 
-              <Link
-                href={audience.href}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-fg transition-opacity hover:opacity-60"
-              >
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-fg transition-opacity group-hover:opacity-60">
                 {audience.cta}
                 <LuChevronRight className="h-4 w-4" />
-              </Link>
-            </div>
+              </span>
+            </Link>
             </FadeInItem>
           ))}
         </FadeInStagger>

@@ -10,6 +10,7 @@ import {
   LuCalendar,
   LuWrench,
   LuLeaf,
+  LuInbox,
 } from 'react-icons/lu'
 
 import { AppDemo } from '@/components/AppDemo'
@@ -78,6 +79,13 @@ const notifications: Notification[] = [
     iconColor: 'text-emerald-600',
     title: 'Retrofit Complete',
     subtitle: 'Solar panels installed',
+  },
+  {
+    icon: LuInbox,
+    iconBg: 'bg-blue-100',
+    iconColor: 'text-blue-600',
+    title: 'You Have a New Request',
+    subtitle: 'Leaking tap — 14 Elm Court',
   },
 ]
 

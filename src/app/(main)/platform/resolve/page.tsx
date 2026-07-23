@@ -199,30 +199,28 @@ const steps = [
   {
     number: '01',
     Icon: LuSmartphone,
-    title: 'Resident reports via app',
-    description:
-      'In under two minutes, a resident submits an issue with photos, description, and location. No phone calls needed.',
+    title: 'Reported in seconds',
+    description: 'A resident reports a problem in less than 30 seconds.',
   },
   {
     number: '02',
     Icon: LuZap,
-    title: 'AI triage & prioritisation',
+    title: 'Categorised & allocated',
     description:
-      'The issue is automatically categorised and urgency assessed. Emergency repairs are flagged instantly for immediate action.',
+      'The report is categorised, time and date stamped, and automatically allocated to the relevant contractor or team member.',
   },
   {
     number: '03',
     Icon: LuHardHat,
-    title: 'Contractor assigned',
+    title: 'Actioned & updated',
     description:
-      'Your team assigns the job to an approved contractor. The resident receives a confirmation with an appointment window.',
+      'The team member actions the report and amends the status for the resident.',
   },
   {
     number: '04',
     Icon: LuCircleCheck,
-    title: 'Resolved & signed off',
-    description:
-      'The resident confirms completion, closing the job with a full audit trail. Compliance evidence is stored automatically.',
+    title: 'Resolved before it escalates',
+    description: 'The issue is resolved before becoming a major issue.',
   },
 ]
 
@@ -432,7 +430,7 @@ export default function ResolvePage() {
                       <h3 className="text-base font-bold text-fg transition-colors duration-200 group-hover:text-brand-700">
                         {step.title}
                       </h3>
-                      <p className="mt-2 max-w-[18ch] text-sm leading-relaxed text-fg-muted">
+                      <p className="mt-2 max-w-[30ch] text-sm leading-relaxed text-fg-muted">
                         {step.description}
                       </p>
                     </div>

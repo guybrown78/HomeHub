@@ -7,6 +7,7 @@ import { motion, useInView, useMotionValue } from 'framer-motion'
 import { AppScreen } from '@/components/AppScreen'
 import Image from 'next/image'
 import tipsScreen from '@/images/tips-advice.png'
+import { LuSettings, LuBell } from 'react-icons/lu'
 const prices = [
   997.56, 944.34, 972.25, 832.4, 888.76, 834.8, 805.56, 767.38, 861.21, 669.6,
   694.39, 721.32, 694.03, 610.1, 502.2, 549.56, 611.03, 583.4, 610.14, 660.6,
@@ -245,7 +246,13 @@ export function AppDemo() {
             </div>
           </div>
         </div> */}
-				<Image className="mt-6" src={tipsScreen} alt="Energy saving tips and advice screen" />
+				<div className="relative mt-6">
+					<Image src={tipsScreen} alt="Energy saving tips and advice screen" />
+					<div className="absolute top-[7.2%] right-[6%] flex items-center gap-3">
+						<LuSettings className="h-4 w-4 text-white/80" strokeWidth={2} />
+						<LuBell className="h-4 w-4 text-white/80" strokeWidth={2} />
+					</div>
+				</div>
       </AppScreen.Body>
     </AppScreen>
   )
