@@ -10,7 +10,6 @@ import {
   LuChevronRight,
   LuArrowRight,
   LuCircleX,
-  LuInfo,
   LuWrench,
   LuLifeBuoy,
   LuFileText,
@@ -409,18 +408,10 @@ export default function ComplianceRegulationPage() {
                 action and resolution.
               </p>
 
-              <div className="mt-8 flex gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
-                <LuInfo className="mt-0.5 h-5 w-5 flex-none text-white/50" strokeWidth={1.75} />
-                <div>
-                  <p className="text-sm font-semibold text-white">
-                    Not an emergency reporting service
-                  </p>
-                  <p className="mt-0.5 text-sm text-white/60">
-                    Landlords should continue to provide and communicate the correct emergency
-                    contact routes.
-                  </p>
-                </div>
-              </div>
+              <p className="mt-6 text-sm text-white/40">
+                For emergencies, residents should continue to use your published emergency
+                contact routes.
+              </p>
 
               <FadeIn delay={0.2} className="mt-10">
                 <Button href="/platform/resolve" variant="solid" color="white">
