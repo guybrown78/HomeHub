@@ -203,10 +203,6 @@ const connectedModules = [
     name: 'Tenant Voice',
     description: 'Give residents clearer opportunities to provide feedback and contribute to service improvement.',
   },
-  {
-    name: 'AI support',
-    description: 'Help residents navigate the platform and find relevant information more easily as HomeHub’s AI capabilities develop.',
-  },
 ]
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -516,7 +512,7 @@ export default function ComplianceRegulationPage() {
                 </FadeInItem>
               ) : (
                 <FadeInItem key={mod.name}>
-                  <div className="flex h-full flex-col justify-between rounded-2xl border border-dashed border-border bg-bg-muted p-5">
+                  <div className="flex h-full flex-col justify-between rounded-2xl border border-border bg-card p-5 shadow-sm">
                     <div>
                       <p className="text-base font-bold text-fg">{mod.name}</p>
                       <p className="mt-1.5 text-sm leading-relaxed text-fg-muted">

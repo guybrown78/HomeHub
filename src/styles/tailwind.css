@@ -134,6 +134,14 @@
   }
 }
 
+/* Plain top-level keyframes — not tied to a Tailwind --animate-* token, so
+   not subject to @theme's utility-based tree-shaking. Used for animations
+   driven entirely via inline animation-* styles (e.g. pausable progress bars). */
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
 @theme inline {
   --animate-marquee: marquee var(--marquee-duration) linear infinite;
 

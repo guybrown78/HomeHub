@@ -6,7 +6,6 @@ import { Button } from '@/components/Button'
 import { Section } from '@/components/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Card } from '@/components/ui/Card'
-import { Callout } from '@/components/ui/Callout'
 import { PhoneFrame } from '@/components/PhoneFrame'
 import { FadeIn, FadeInStagger, FadeInItem } from '@/components/FadeIn'
 import {
@@ -504,13 +503,6 @@ export default function CommunityPage() {
                 ))}
               </FadeInStagger>
             </div>
-
-            <FadeIn delay={0.15} className="mx-auto mt-10 max-w-2xl">
-              <Callout variant="info" title="Rewards aren't guaranteed">
-                Rewards are linked to tips that have been tested and shown to work. Submitting a
-                suggestion does not automatically guarantee a reward.
-              </Callout>
-            </FadeIn>
           </div>
         </Container>
       </Section>
@@ -639,7 +631,7 @@ export default function CommunityPage() {
             <SectionHeader
               eyebrow="Evidence of activity"
               heading="Build a clearer picture of participation and impact"
-              description="Housing providers carry out a wide range of work that supports residents and local communities, but the evidence is often held across separate teams, documents and communication channels. HomeHub Community can help bring more of that activity into one clearer picture — supporting internal reviews, client reporting, funding discussions and wider conversations about social value. HomeHub does not automatically satisfy a particular framework or reporting requirement; it helps organisations gather more useful evidence of the activity taking place."
+              description="Housing providers carry out a wide range of work that supports residents and local communities, but the evidence is often held across separate teams, documents and communication channels. HomeHub Community brings more of that activity into one clearer picture — supporting internal reviews, client reporting, funding discussions and wider conversations about social value with more useful evidence of the activity taking place."
               align="center"
             />
           </FadeIn>

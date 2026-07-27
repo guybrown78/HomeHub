@@ -6,7 +6,6 @@ import { Button } from '@/components/Button'
 import { Section } from '@/components/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Card } from '@/components/ui/Card'
-import { Callout } from '@/components/ui/Callout'
 import { PhoneFrame } from '@/components/PhoneFrame'
 import { FadeIn, FadeInStagger, FadeInItem } from '@/components/FadeIn'
 import {
@@ -454,12 +453,11 @@ export default function EnergyPage() {
             ))}
           </FadeInStagger>
 
-          <FadeIn delay={0.15} className="mx-auto mt-10 max-w-3xl">
-            <Callout variant="warning" title="Human review required">
-              Any identification should support human review and appropriate follow-up. It
-              should not be treated as an automated decision about a resident&rsquo;s
-              circumstances.
-            </Callout>
+          <FadeIn delay={0.15}>
+            <p className="mx-auto mt-10 max-w-2xl text-center text-fg-muted">
+              Every case stays with a person to review, so teams can decide the right follow-up
+              and support with confidence.
+            </p>
           </FadeIn>
         </Container>
       </Section>
