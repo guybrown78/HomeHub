@@ -8,7 +8,9 @@ export function GooglePlayLink({
 }) {
   return (
     <Link
-      href="#"
+      href="https://play.google.com/store/apps/details?id=uk.co.homehubinfo&hl=en"
+      target="_blank"
+      rel="noopener noreferrer"
       aria-label="Get it on Google Play"
       className={clsx(
         'inline-flex h-10 items-center gap-2.5 rounded-lg px-3.5 transition-colors',
