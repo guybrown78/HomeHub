@@ -39,10 +39,13 @@
   --animate-spin-reverse: spin-reverse 1s linear infinite;
   --animate-spin-reverse-slow: spin-reverse 4s linear infinite;
   --animate-spin-reverse-slower: spin-reverse 6s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 8s ease-in-out 2s infinite;
 
   --radius-4xl: 2rem;
   --radius-5xl: 2.5rem;
 
+  /* ── Gray palette ─────────────────────────────────────────── */
   --color-gray-50: oklch(0.985 0 0);
   --color-gray-100: oklch(0.97 0 0);
   --color-gray-200: oklch(0.922 0 0);
@@ -54,6 +57,59 @@
   --color-gray-800: oklch(0.269 0 0);
   --color-gray-900: oklch(0.205 0 0);
   --color-gray-950: oklch(0.145 0 0);
+
+  /* ── Brand palette (purple) ────────────────────────────────────────────────
+     Anchored at brand-950 = #361B64 (exact Figma value)
+     Verified: oklch(0.3055 0.1212 295.2)
+     H=295 throughout; chroma peaks at 700–900, tapers to pale tint at 50.
+     ────────────────────────────────────────────────────────────────────────── */
+  --color-brand-50:  oklch(0.968 0.014 295);
+  --color-brand-100: oklch(0.946 0.024 295);
+  --color-brand-200: oklch(0.905 0.048 295);
+  --color-brand-300: oklch(0.855 0.074 295);
+  --color-brand-400: oklch(0.785 0.094 295);
+  --color-brand-500: oklch(0.704 0.106 295);
+  --color-brand-600: oklch(0.621 0.114 295);
+  --color-brand-700: oklch(0.565 0.118 295);
+  --color-brand-800: oklch(0.472 0.118 295);
+  --color-brand-900: oklch(0.374 0.116 295);
+  --color-brand-950: #361B64;
+
+  /* ── Accent palette (amber-yellow) ────────────────────────────────────────
+     Anchored at accent-400 = #FFCC5B (exact Figma value)
+     Verified: oklch(0.8695 0.1409 84.6)
+     H=84 throughout; chroma peaks at 500–600, tapers at extremes.
+     ────────────────────────────────────────────────────────────────────────── */
+  --color-accent-50:  oklch(0.982 0.010 85);
+  --color-accent-100: oklch(0.962 0.028 85);
+  --color-accent-200: oklch(0.930 0.058 84);
+  --color-accent-300: oklch(0.900 0.098 84);
+  --color-accent-400: #FFCC5B;
+  --color-accent-500: oklch(0.770 0.172 82);
+  --color-accent-600: oklch(0.660 0.184 80);
+  --color-accent-700: oklch(0.545 0.168 78);
+  --color-accent-800: oklch(0.432 0.130 76);
+  --color-accent-900: oklch(0.336 0.090 74);
+  --color-accent-950: oklch(0.248 0.060 72);
+
+  /* ── Semantic tokens — default (light) surface ─────────────────────────────
+     --color-page / --color-bg-muted use the Figma surface gray #F1F1F1.
+     White cards pop against this neutral canvas.
+     ────────────────────────────────────────────────────────────────────────── */
+  --color-page:          #F1F1F1;          /* Figma surface gray — site root bg    */
+  --color-bg:            #ffffff;          /* white — default section bg           */
+  --color-bg-muted:      #F1F1F1;          /* Figma surface gray — alternate rows  */
+  --color-card:          #ffffff;          /* white card bg                        */
+  --color-card-muted:    oklch(0.970 0 0); /* slightly off-white muted card        */
+  --color-fg:            oklch(0.145 0 0); /* near-black — primary text            */
+  --color-fg-muted:      oklch(0.439 0 0); /* gray-600 — secondary text            */
+  --color-fg-subtle:     oklch(0.708 0 0); /* gray-400 — tertiary / placeholder    */
+  --color-border:        oklch(0.922 0 0); /* gray-200                             */
+  --color-border-strong: oklch(0.870 0 0); /* gray-300                             */
+  --color-primary:       #361B64;          /* brand-950 exact — primary CTA bg     */
+  --color-primary-fg:    #ffffff;          /* white — text on primary surface      */
+  --color-secondary:     #FFCC5B;          /* accent-400 exact — secondary CTA bg  */
+  --color-secondary-fg:  #361B64;          /* brand-950 — text on accent surface   */
 
   --font-sans: var(--font-rubik);
 
@@ -72,6 +128,18 @@
       transform: rotate(-360deg);
     }
   }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+}
+
+/* Plain top-level keyframes — not tied to a Tailwind --animate-* token, so
+   not subject to @theme's utility-based tree-shaking. Used for animations
+   driven entirely via inline animation-* styles (e.g. pausable progress bars). */
+@keyframes progress-fill {
+  from { width: 0%; }
+  to { width: 100%; }
 }
 
 @theme inline {
@@ -84,6 +152,43 @@
   }
 }
 
+/* ── Section-level theme overrides ───────────────────────────────────────────
+   Apply data-theme="brand|accent|brand-light" to any wrapper element.
+   Semantic tokens (bg-bg, text-fg, etc.) cascade automatically to children.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+[data-theme="brand"] {
+  --color-bg:            #361B64;                    /* brand-950 exact              */
+  --color-fg:            #ffffff;
+  --color-fg-muted:      rgba(255, 255, 255, 0.65);
+  --color-fg-subtle:     rgba(255, 255, 255, 0.40);
+  --color-card:          rgba(255, 255, 255, 0.08);
+  --color-card-muted:    rgba(255, 255, 255, 0.04);
+  --color-border:        rgba(255, 255, 255, 0.12);
+  --color-border-strong: rgba(255, 255, 255, 0.22);
+}
+
+[data-theme="accent"] {
+  --color-bg:            #FFCC5B;                    /* accent-400 exact             */
+  --color-fg:            #361B64;                    /* brand-950 exact              */
+  --color-fg-muted:      color-mix(in oklch, #361B64 72%, transparent);
+  --color-fg-subtle:     color-mix(in oklch, #361B64 48%, transparent);
+  --color-card:          rgba(255, 255, 255, 0.55);
+  --color-card-muted:    rgba(255, 255, 255, 0.30);
+  --color-border:        color-mix(in oklch, #361B64 14%, transparent);
+  --color-border-strong: color-mix(in oklch, #361B64 24%, transparent);
+}
+
+[data-theme="brand-light"] {
+  --color-bg:            oklch(0.968 0.014 295);     /* brand-50                     */
+  --color-fg:            #361B64;                    /* brand-950 exact              */
+  --color-fg-muted:      oklch(0.565 0.118 295);     /* brand-700                    */
+  --color-fg-subtle:     oklch(0.704 0.106 295);     /* brand-500                    */
+  --color-card:          #ffffff;
+  --color-card-muted:    oklch(0.946 0.024 295);     /* brand-100                    */
+  --color-border:        oklch(0.905 0.048 295);     /* brand-200                    */
+  --color-border-strong: oklch(0.855 0.074 295);     /* brand-300                    */
+}
 
 html {
   scroll-behavior: smooth;

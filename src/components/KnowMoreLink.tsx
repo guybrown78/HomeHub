@@ -14,8 +14,8 @@ const KnowMoreLink = ({
       className={clsx(
         'inline-flex justify-center rounded-full py-3 px-3 text-sm font-semibold transition-colors',
         color === 'violet'
-          ? 'bg-violet-950 text-white hover:bg-violet-900'
-          : 'bg-[#FFA500] text-violet-950 hover:bg-[#FFA500]',
+          ? 'bg-brand-950 text-white hover:bg-brand-900'
+          : 'bg-[#FFA500] text-brand-950 hover:bg-[#FFA500]',
       )}
     >
       <span className='flex justify-center items-center text-lg font-semibold'><HiBellAlert className='mr-2'/> I want to know more</span>

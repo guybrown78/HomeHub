@@ -8,7 +8,9 @@ export function AppStoreLink({
 }) {
   return (
     <Link
-      href="#"
+      href="https://apps.apple.com/gb/app/homehub-info/id6752408814"
+      target="_blank"
+      rel="noopener noreferrer"
       aria-label="Download on the App Store"
       className={clsx(
         'rounded-lg transition-colors',

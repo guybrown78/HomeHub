@@ -57,18 +57,17 @@ const Register = () => {
   }
 
   return (
-    <div className="bg-violet-950">
-      <section
-        id="register"
-        aria-label="Register your interest"
-        className="rounded-t-5xl bg-gray-50 py-20 sm:py-32"
-      >
-        <Container className="">
+    <section
+      id="register"
+      aria-label="Register your interest"
+      className="-mt-10 rounded-t-5xl bg-bg-muted py-20 sm:py-32"
+    >
+        <Container>
           <div className="mx-auto max-w-2xl sm:text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-violet-950">
-              We’re not live yet — but we’re getting&nbsp;close.
+            <h2 className="text-3xl font-bold tracking-tight text-brand-950">
+              We&apos;re not live yet — but we&apos;re getting&nbsp;close.
             </h2>
-            <p className="mt-2 text-lg text-gray-600">
+            <p className="mt-2 text-lg text-fg-muted">
               HomeHub is launching soon. Register your interest to stay in the
               loop and be first to know when we go live.
             </p>
@@ -109,8 +108,8 @@ const Register = () => {
             </div>
 
             <fieldset>
-              <legend className="block text-sm font-medium text-gray-700">
-                I’m a...
+              <legend className="block text-sm font-medium text-fg">
+                I&apos;m a...
               </legend>
               <div className="mt-2 space-y-2">
                 <label className="flex items-center gap-2">
@@ -121,9 +120,9 @@ const Register = () => {
                     checked={formData.role === 'tenant'}
                     onChange={handleChange}
                     required
-                    className="text-violet-600 focus:ring-violet-600"
+                    className="text-brand-700 focus:ring-brand-700"
                   />
-                  <span className="text-gray-700">Tenant</span>
+                  <span className="text-fg-muted">Tenant</span>
                 </label>
 
                 <label className="flex items-center gap-2">
@@ -134,9 +133,9 @@ const Register = () => {
                     checked={formData.role === 'landlord'}
                     onChange={handleChange}
                     required
-                    className="text-violet-600 focus:ring-violet-600"
+                    className="text-brand-700 focus:ring-brand-700"
                   />
-                  <span className="text-gray-700">Landlord</span>
+                  <span className="text-fg-muted">Landlord</span>
                 </label>
 
 								 <label className="flex items-center gap-2">
@@ -147,9 +146,9 @@ const Register = () => {
                     checked={formData.role === 'homeowner'}
                     onChange={handleChange}
                     required
-                    className="text-violet-600 focus:ring-violet-600"
+                    className="text-brand-700 focus:ring-brand-700"
                   />
-                  <span className="text-gray-700">Homeowner</span>
+                  <span className="text-fg-muted">Homeowner</span>
                 </label>
 
 								 <label className="flex items-center gap-2">
@@ -160,9 +159,9 @@ const Register = () => {
                     checked={formData.role === 'investor'}
                     onChange={handleChange}
                     required
-                    className="text-violet-600 focus:ring-violet-600"
+                    className="text-brand-700 focus:ring-brand-700"
                   />
-                  <span className="text-gray-700">Investor</span>
+                  <span className="text-fg-muted">Investor</span>
                 </label>
 
 								<label className="flex items-center gap-2">
@@ -173,9 +172,9 @@ const Register = () => {
                     checked={formData.role === 'other'}
                     onChange={handleChange}
                     required
-                    className="text-violet-600 focus:ring-violet-600"
+                    className="text-brand-700 focus:ring-brand-700"
                   />
-                  <span className="text-gray-700">Other</span>
+                  <span className="text-fg-muted">Other</span>
                 </label>
 
 
@@ -193,7 +192,7 @@ const Register = () => {
                       Registering{' '}
                       <span
                         aria-hidden="true"
-                        className="fill-aoc-navy ml-2 h-5 w-5 animate-spin"
+                        className="fill-white ml-2 h-5 w-5 animate-spin"
                       >
                         <Spinner />
                       </span>
@@ -204,7 +203,7 @@ const Register = () => {
             )}
             {isSuccess && (
               <div className="col-span-full rounded-md bg-green-50 p-4">
-                <p className="text-aoc-navy text-sm font-light">
+                <p className="text-fg text-sm font-light">
                   <span className="font-semibold">Thank you.</span> Your message
                   has been received, and you will be contacted shortly.
                 </p>
@@ -212,27 +211,26 @@ const Register = () => {
             )}
             {isError && (
               <div className="col-span-full rounded-md bg-pink-50 p-4">
-                <p className="text-aoc-navy text-sm font-light">
+                <p className="text-fg text-sm font-light">
                   <span className="font-semibold">Oh dear.</span> There has been
                   a problem while sending your message. This will be resolved as
                   soon as possible.
                 </p>
-                <p className="text-aoc-navy mt-2 text-sm font-light">
-                  In the meantime, please send any messages direct to{' '}
+                <p className="text-fg mt-2 text-sm font-light">
+                  In the meantime, please email us at{' '}
                   <a
-                    href="mailto:lee@consultnetzero.co.uk"
+                    href="mailto:home@homehubinfo.co.uk"
                     target="_blank"
                     className="cursor-pointer font-medium underline"
                   >
-                    lee@consultnetzero.co.uk
+                    home@homehubinfo.co.uk
                   </a>
                 </p>
               </div>
             )}
           </form>
         </Container>
-      </section>
-    </div>
+    </section>
   )
 }
 
