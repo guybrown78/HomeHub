@@ -1,4 +1,5 @@
 import { type MetadataRoute } from 'next'
+import { insights } from '@/data/insights'
 
 const baseUrl = 'https://www.homehub.co.uk'
 
@@ -24,6 +25,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Resources
     { url: '/resources/guides', changeFrequency: 'weekly' as const, priority: 0.6 },
     { url: '/resources/insights', changeFrequency: 'weekly' as const, priority: 0.6 },
+    ...insights.map((insight) => ({
+      url: `/resources/insights/${insight.slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.5,
+    })),
     { url: '/resources/faqs', changeFrequency: 'monthly' as const, priority: 0.6 },
     // Company
     { url: '/about', changeFrequency: 'monthly' as const, priority: 0.6 },
