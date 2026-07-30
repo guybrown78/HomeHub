@@ -2,7 +2,7 @@ import Image, { type StaticImageData } from 'next/image'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger, FadeInItem } from '@/components/FadeIn'
 import { Section } from '@/components/Section'
-import { LuShieldCheck, LuGlobe, LuLock, LuTrophy, LuBuilding2 } from 'react-icons/lu'
+import { LuShieldCheck, LuGlobe, LuLock, LuTrophy } from 'react-icons/lu'
 import northernHousingWinner from '@/images/awards/northern-housing-awards-2026-winner.jpeg'
 import energyEfficiencyConsultantWinner from '@/images/awards/energy-efficiency-awards-2025-consultant-winner.jpg'
 import energyEfficiencyProductThirdPlace from '@/images/awards/energy-efficiency-awards-2025-product-third-place.png'
@@ -10,10 +10,12 @@ import teesBusinessNetZeroWinner from '@/images/awards/tees-business-awards-2026
 import teesBusinessInnovationWinner from '@/images/awards/tees-business-awards-2026-innovation-winner.jpeg'
 import teesTechFinalist from '@/images/awards/tees-tech-awards-2025-tech-for-good-finalist.png'
 import energyEfficiencyAwards2026Logo from '@/images/awards/energy-efficiency-awards-2026-logo.png'
+import railwayHaLogo from '@/images/partners/railway-ha-logo.png'
+import northStarLogo from '@/images/partners/north-star-logo.svg'
 
-const clients = [
-  { name: 'Railway Housing Association', href: 'https://www.railwayha.co.uk/' },
-  { name: 'Thirteen Group', href: 'http://thirteengroup.co.uk/' },
+const clients: { name: string; href: string; logo: StaticImageData }[] = [
+  { name: 'Railway Housing Association', href: 'https://www.railwayha.co.uk/', logo: railwayHaLogo },
+  { name: 'North Star Housing Group', href: 'https://www.northstarhg.co.uk/', logo: northStarLogo },
 ]
 
 type AwardStatus = 'Winner' | 'Shortlisted' | 'Third Place'
@@ -125,9 +127,17 @@ export function SocialProof() {
                 href={client.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 rounded-full border border-border bg-card px-5 py-2.5 transition-all hover:border-brand-200 hover:shadow-sm"
+                className="flex items-center gap-3 rounded-full border border-border bg-card py-2 pr-5 pl-3 transition-all hover:border-brand-200 hover:shadow-sm"
               >
-                <LuBuilding2 className="h-4 w-4 flex-none text-brand-400" strokeWidth={1.75} />
+                <span className="relative h-6 w-16 flex-none">
+                  <Image
+                    src={client.logo}
+                    alt={`${client.name} logo`}
+                    fill
+                    className="object-contain object-left"
+                    sizes="64px"
+                  />
+                </span>
                 <span className="text-sm font-semibold text-fg-muted">{client.name}</span>
               </a>
             </FadeInItem>
