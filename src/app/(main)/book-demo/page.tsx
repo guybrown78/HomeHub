@@ -129,10 +129,10 @@ export default function BookDemoPage() {
               <div>
                 <p className="text-xs font-semibold text-fg">Prefer to talk?</p>
                 <a
-                  href="mailto:hello@homehubinfo.co.uk"
+                  href="mailto:home@homehubinfo.co.uk"
                   className="text-xs text-fg-muted underline-offset-2 hover:underline"
                 >
-                  hello@homehubinfo.co.uk
+                  home@homehubinfo.co.uk
                 </a>
               </div>
             </div>

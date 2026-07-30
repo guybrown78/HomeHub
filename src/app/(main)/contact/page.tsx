@@ -1,6 +1,7 @@
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { Section } from '@/components/Section'
+import { ContactForm } from '@/components/ContactForm'
 
 export const metadata = {
   title: 'Contact Us | HomeHub',
@@ -18,19 +19,19 @@ const contactOptions = [
     title: 'Sales Enquiries',
     description: 'Talk to our team about pricing, implementation, and how HomeHub fits your needs.',
     cta: 'Email Sales',
-    href: 'mailto:sales@homehub.co.uk',
+    href: 'mailto:home@homehubinfo.co.uk?subject=Sales%20Enquiry',
   },
   {
     title: 'Partnership Opportunities',
     description: 'Explore how your organisation can work with HomeHub to improve housing outcomes.',
     cta: 'Email Partnerships',
-    href: 'mailto:partnerships@homehub.co.uk',
+    href: 'mailto:home@homehubinfo.co.uk?subject=Partnership%20Opportunity',
   },
   {
     title: 'Support',
     description: 'Already a customer? Our support team is here to help with technical questions.',
     cta: 'Get Support',
-    href: 'mailto:support@homehub.co.uk',
+    href: 'mailto:home@homehubinfo.co.uk?subject=Support%20Request',
   },
 ]
 
@@ -77,62 +78,7 @@ export default function ContactPage() {
               <div className="rounded-2xl bg-brand-950 p-8 text-white sm:p-10">
                 <h2 className="text-2xl font-bold">Send us a message</h2>
                 <p className="mt-2 text-white/70 text-sm">We aim to respond to all enquiries within one business day.</p>
-                <form className="mt-8 space-y-5" action="#" method="POST">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-white/80">
-                      Full name
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      className="mt-1.5 block w-full rounded-lg bg-white/10 px-4 py-3 text-sm text-white placeholder-white/40 outline-none ring-1 ring-white/20 focus:ring-2 focus:ring-amber-400"
-                      placeholder="Jane Smith"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-white/80">
-                      Email address
-                    </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      className="mt-1.5 block w-full rounded-lg bg-white/10 px-4 py-3 text-sm text-white placeholder-white/40 outline-none ring-1 ring-white/20 focus:ring-2 focus:ring-amber-400"
-                      placeholder="jane@organisation.co.uk"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="organisation" className="block text-sm font-medium text-white/80">
-                      Organisation
-                    </label>
-                    <input
-                      id="organisation"
-                      name="organisation"
-                      type="text"
-                      className="mt-1.5 block w-full rounded-lg bg-white/10 px-4 py-3 text-sm text-white placeholder-white/40 outline-none ring-1 ring-white/20 focus:ring-2 focus:ring-amber-400"
-                      placeholder="Housing Association Name"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-white/80">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      rows={4}
-                      required
-                      className="mt-1.5 block w-full rounded-lg bg-white/10 px-4 py-3 text-sm text-white placeholder-white/40 outline-none ring-1 ring-white/20 focus:ring-2 focus:ring-amber-400 resize-none"
-                      placeholder="Tell us how we can help..."
-                    />
-                  </div>
-                  <Button type="submit" className="w-full justify-center">
-                    Send Message
-                  </Button>
-                </form>
+                <ContactForm />
               </div>
             </div>
           </div>

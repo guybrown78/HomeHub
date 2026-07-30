@@ -69,8 +69,8 @@ export function DemoBookingForm() {
         </p>
         <p className="mt-4 text-sm text-fg-muted">
           In the meantime, feel free to email us at{' '}
-          <a href="mailto:hello@homehubinfo.co.uk" className="font-semibold text-brand-700 underline">
-            hello@homehubinfo.co.uk
+          <a href="mailto:home@homehubinfo.co.uk" className="font-semibold text-brand-700 underline">
+            home@homehubinfo.co.uk
           </a>
         </p>
       </div>
@@ -153,8 +153,8 @@ export function DemoBookingForm() {
       {isError && (
         <div className="rounded-lg bg-rose-50 p-4 text-sm text-rose-700">
           Something went wrong. Please try again or email us at{' '}
-          <a href="mailto:hello@homehubinfo.co.uk" className="font-semibold underline">
-            hello@homehubinfo.co.uk
+          <a href="mailto:home@homehubinfo.co.uk" className="font-semibold underline">
+            home@homehubinfo.co.uk
           </a>
         </div>
       )}
