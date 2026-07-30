@@ -6,6 +6,7 @@ import { Button } from '@/components/Button'
 import { Section } from '@/components/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Card } from '@/components/ui/Card'
+import { YouTubeEmbed } from '@/components/ui/YouTubeEmbed'
 import { PhoneFrame } from '@/components/PhoneFrame'
 import { FadeIn, FadeInStagger, FadeInItem } from '@/components/FadeIn'
 import {
@@ -33,7 +34,6 @@ import {
   LuBookOpen,
   LuGraduationCap,
   LuMegaphone,
-  LuPlay,
 } from 'react-icons/lu'
 
 export const metadata = {
@@ -574,18 +574,11 @@ export default function EnergyPage() {
           </FadeIn>
 
           <FadeIn delay={0.15} className="mx-auto mt-12 max-w-3xl">
-            <div className="relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br from-brand-900 to-brand-950 ring-1 ring-white/10">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/90 shadow-lg">
-                  <LuPlay className="ml-1 h-6 w-6 text-brand-950" strokeWidth={2} />
-                </div>
-              </div>
-            </div>
-            <div className="mt-6 text-center">
-              <Button variant="solid" color="white">
-                Watch the introduction
-              </Button>
-            </div>
+            <YouTubeEmbed
+              videoId="dSdC6WJkXug"
+              title="See HomeHub in 60 seconds"
+              className="ring-1 ring-white/10"
+            />
           </FadeIn>
         </Container>
       </Section>

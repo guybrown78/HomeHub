@@ -6,6 +6,7 @@ import { Container } from '@/components/Container'
 import { Section } from '@/components/Section'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Card } from '@/components/ui/Card'
+import { YouTubeEmbed } from '@/components/ui/YouTubeEmbed'
 import { PhoneFrame } from '@/components/PhoneFrame'
 import { AppStoreLink } from '@/components/AppStoreLink'
 import { GooglePlayLink } from '@/components/GooglePlayLink'
@@ -462,6 +463,28 @@ export default function TenantsPage() {
               </FadeInItem>
             ))}
           </FadeInStagger>
+        </Container>
+      </Section>
+
+      {/* ── Video introduction ── */}
+      <Section data-theme="brand" className="bg-bg py-20 sm:py-32">
+        <Container>
+          <FadeIn className="mx-auto max-w-2xl text-center">
+            <SectionHeader
+              eyebrow="See it in action"
+              heading="See HomeHub in 60 seconds"
+              description="See how residents use HomeHub to report issues, track repairs and stay connected with their housing provider — all from their phone."
+              align="center"
+            />
+          </FadeIn>
+
+          <FadeIn delay={0.15} className="mx-auto mt-12 max-w-3xl">
+            <YouTubeEmbed
+              videoId="dSdC6WJkXug"
+              title="See HomeHub in 60 seconds"
+              className="ring-1 ring-white/10"
+            />
+          </FadeIn>
         </Container>
       </Section>
 

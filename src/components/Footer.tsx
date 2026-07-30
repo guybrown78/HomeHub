@@ -38,7 +38,7 @@ export function Footer() {
               </p>
               <div className="mt-6 flex gap-3">
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/company/homehub-info"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn"
@@ -47,7 +47,7 @@ export function Footer() {
                   <LinkedInIcon className="h-4 w-4" />
                 </a>
                 <a
-                  href="https://youtube.com"
+                  href="http://www.youtube.com/@HomeHubInfo"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
