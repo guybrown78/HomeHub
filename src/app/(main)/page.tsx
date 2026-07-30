@@ -18,7 +18,7 @@ export default function Home() {
       <PrimaryFeatures />
       <LandlordBenefits />
       <SocialProof />
-      <Resources />
+      {/* <Resources /> */}
       <FinalCTA />
     </>
   )
