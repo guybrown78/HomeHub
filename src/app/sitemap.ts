@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: '/residents/contractors', changeFrequency: 'monthly' as const, priority: 0.7 },
     { url: '/residents/download-app', changeFrequency: 'monthly' as const, priority: 0.7 },
     // Resources
-    { url: '/resources/guides', changeFrequency: 'weekly' as const, priority: 0.6 },
+    // { url: '/resources/guides', changeFrequency: 'weekly' as const, priority: 0.6 },
     { url: '/resources/insights', changeFrequency: 'weekly' as const, priority: 0.6 },
     ...insights.map((insight) => ({
       url: `/resources/insights/${insight.slug}`,

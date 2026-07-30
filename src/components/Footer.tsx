@@ -102,9 +102,9 @@ export function Footer() {
           <p className="hidden text-xs text-white/50 lg:block">
             Let&apos;s make tenant engagement better, together.
           </p>
-          <Link href="/design-system" className="text-xs text-white/30 transition-colors hover:text-white/60">
+          {/* <Link href="/design-system" className="text-xs text-white/30 transition-colors hover:text-white/60">
             ↗ Design System
-          </Link>
+          </Link> */}
         </div>
       </Container>
     </footer>

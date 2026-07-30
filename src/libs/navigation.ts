@@ -137,12 +137,12 @@ export const navSections: NavSection[] = [
     iconBg: 'bg-emerald-50',
     iconColor: 'text-emerald-700',
     links: [
-      {
-        label: 'Guides',
-        href: '/resources/guides',
-        icon: LuBookOpen,
-        description: 'Plain-English guides for landlords and residents',
-      },
+      // {
+      //   label: 'Guides',
+      //   href: '/resources/guides',
+      //   icon: LuBookOpen,
+      //   description: 'Plain-English guides for landlords and residents',
+      // },
       {
         label: 'Insights',
         href: '/resources/insights',

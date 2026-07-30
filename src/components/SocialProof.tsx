@@ -7,6 +7,9 @@ import northernHousingWinner from '@/images/awards/northern-housing-awards-2026-
 import energyEfficiencyConsultantWinner from '@/images/awards/energy-efficiency-awards-2025-consultant-winner.jpg'
 import energyEfficiencyProductThirdPlace from '@/images/awards/energy-efficiency-awards-2025-product-third-place.png'
 import teesBusinessNetZeroWinner from '@/images/awards/tees-business-awards-2026-net-zero-winner.jpg'
+import teesBusinessInnovationWinner from '@/images/awards/tees-business-awards-2026-innovation-winner.jpeg'
+import teesTechFinalist from '@/images/awards/tees-tech-awards-2025-tech-for-good-finalist.png'
+import energyEfficiencyAwards2026Logo from '@/images/awards/energy-efficiency-awards-2026-logo.png'
 
 const clients = [
   { name: 'Railway Housing Association', href: 'https://www.railwayha.co.uk/' },
@@ -38,18 +41,20 @@ const awards: {
     image: northernHousingWinner,
   },
   {
-    body: 'The Energy Awards',
+    body: 'The Energy Efficiency Awards',
     category: 'Energy Champion of the Year — Collective Achievement',
     status: 'Winner',
     year: '2026',
     href: 'https://theenergyawards.com/2026/en/page/2025-winners',
+    image: energyEfficiencyAwards2026Logo,
   },
   {
-    body: 'The Energy Awards',
+    body: 'The Energy Efficiency Awards',
     category: 'Energy Champion of the Year — Individual Achievement',
     status: 'Shortlisted',
     year: '2026',
     href: 'https://theenergyawards.com/2026/en/page/2025-winners',
+    image: energyEfficiencyAwards2026Logo,
   },
   {
     body: 'Tees Business Awards',
@@ -65,13 +70,15 @@ const awards: {
     status: 'Winner',
     year: '2026',
     href: 'https://teesbusiness.co.uk/2026/04/24/tees-business-awards-2026-winners-roll-call/',
+    image: teesBusinessInnovationWinner,
   },
   {
     body: 'Tees Tech Awards',
-    category: 'The Janice Webster Unsung Hero Award',
+    category: 'Tech for Good Award',
     status: 'Shortlisted',
     year: '2025',
     href: 'https://teesbusiness.co.uk/2025/06/06/tees-tech-awards-2025-rollcall/',
+    image: teesTechFinalist,
   },
   {
     body: 'National Energy Efficiency Awards',
@@ -144,7 +151,7 @@ export function SocialProof() {
             stagger={0.05}
           >
             {awards.map((award) => (
-              <FadeInItem key={`${award.body}-${award.category}`}>
+              <FadeInItem key={`${award.body}-${award.category}-${award.year}`}>
                 <a
                   href={award.href}
                   target="_blank"
